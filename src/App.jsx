@@ -24,7 +24,7 @@ function App() {
       <ReactQueryDevtools />
       <BrowserRouter>
         <MovieProvider>
-          <SerieProvider vider>
+          <SerieProvider>
             <Routes>
               <Route element={<AppLayout />}>
                 <Route element={<Navigate replace to="/" />} />
