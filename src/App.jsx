@@ -14,6 +14,7 @@ import TrendingSeries from "./pages/sidePages/TrendingSeries";
 import PopulerSeries from "./pages/sidePages/PopulerSeries";
 import UpcomingSeries from "./pages/sidePages/UpcomingSeries";
 import { MovieProvider } from "./contexts/movieContext";
+import { SerieProvider } from "./contexts/SerieContext";
 // import { SerieProvider } from "./contexts/SerieContext";
 
 const queryClient = new QueryClient();
@@ -23,8 +24,8 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <ReactQueryDevtools />
       <BrowserRouter>
-        <MovieProvider>
-          {/* <SerieProvider> */}
+        <SerieProvider>
+          <MovieProvider>
             <Routes>
               <Route element={<AppLayout />}>
                 <Route element={<Navigate replace to="/" />} />
@@ -40,8 +41,8 @@ function App() {
                 <Route path="/:id" element={<Details />} />
               </Route>
             </Routes>
-          {/* </SerieProvider> */}
-        </MovieProvider>
+          </MovieProvider>
+        </SerieProvider>
       </BrowserRouter>
     </QueryClientProvider>
   );
