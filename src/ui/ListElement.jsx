@@ -477,7 +477,11 @@ function ListElement({ type, movie, serie }) {
             className="w-32 rounded-lg md:h-72 md:w-72"
           />
         ) : (
-          <img src="/public/imagenotfound.jpg" alt="" />
+          <img
+            src="/public/imagenotfound.jpg"
+            className="w-32 rounded-lg md:h-72 md:w-72"
+            alt=""
+          />
         )}
         <div>
           <div className="flex items-center justify-between">
@@ -513,7 +517,11 @@ function ListElement({ type, movie, serie }) {
             className="w-32 rounded-lg md:h-72 md:w-72"
           />
         ) : (
-          <img src="/public/imagenotfound.jpg" alt="" />
+          <img
+            src="/public/imagenotfound.jpg"
+            className="w-32 rounded-lg md:h-72 md:w-72"
+            alt=""
+          />
         )}
         <div>
           <div className="flex items-center justify-between">
@@ -548,7 +556,11 @@ function ListElement({ type, movie, serie }) {
             className="w-32 rounded-lg md:h-72 md:w-72"
           />
         ) : (
-          <img src="/public/imagenotfound.jpg" alt="" />
+          <img
+            src="/public/imagenotfound.jpg"
+            className="w-32 rounded-lg md:h-72 md:w-72"
+            alt=""
+          />
         )}
         <div>
           <div className="flex items-center justify-between">
@@ -584,7 +596,11 @@ function ListElement({ type, movie, serie }) {
             className="w-32 rounded-lg md:h-72 md:w-72"
           />
         ) : (
-          <img src="/public/imagenotfound.jpg" alt="" />
+          <img
+            src="/public/imagenotfound.jpg"
+            className="w-32 rounded-lg md:h-72 md:w-72"
+            alt=""
+          />
         )}
         <div>
           <div className="flex items-center justify-between">
@@ -620,7 +636,11 @@ function ListElement({ type, movie, serie }) {
             className="w-32 rounded-lg md:h-72 md:w-72"
           />
         ) : (
-          <img src="/public/imagenotfound.jpg" alt="" />
+          <img
+            src="/public/imagenotfound.jpg"
+            className="w-32 rounded-lg md:h-72 md:w-72"
+            alt=""
+          />
         )}
         <div>
           <div className="flex items-center justify-between">
@@ -654,7 +674,11 @@ function ListElement({ type, movie, serie }) {
             className="w-32 rounded-lg md:h-72 md:w-72"
           />
         ) : (
-          <img src="/public/imagenotfound.jpg" alt="" />
+          <img
+            src="/public/imagenotfound.jpg"
+            className="w-32 rounded-lg md:h-72 md:w-72"
+            alt=""
+          />
         )}
         <div>
           <div className="flex items-center justify-between">

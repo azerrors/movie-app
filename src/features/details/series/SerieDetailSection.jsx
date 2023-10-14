@@ -146,7 +146,7 @@ function SerieDetailSection({ serieID }) {
                 </h3>
                 <ul className="mt-2 flex flex-wrap items-center justify-center gap-2">
                   {serieCast?.slice(0, 5)?.map((cast) => {
-                    return <MovieCast key={cast.id} cast={cast} />;
+                    return <SerieCast key={cast.id} cast={cast} />;
                   })}
                 </ul>
               </div>
