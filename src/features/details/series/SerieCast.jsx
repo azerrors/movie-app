@@ -1,7 +1,5 @@
 import { Link } from "react-router-dom";
 
-const BASE_VIDEO = "https://www.youtube.com/embed/";
-
 function SerieCast({ cast }) {
   const BASE_IMAGE = "https://image.tmdb.org/t/p/w500";
   const { profile_path: image, id } = cast;

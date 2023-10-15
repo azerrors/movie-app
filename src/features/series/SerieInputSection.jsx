@@ -1,5 +1,5 @@
-import React from "react";
 import { useSerie } from "../../contexts/SerieContext";
+
 import Loader from "../../ui/Loader";
 import List from "../../ui/List";
 
@@ -7,7 +7,7 @@ function SerieInputSection({ searchSerie, searchedSerieLoading }) {
   const { serieInput } = useSerie();
   return (
     <div>
-      {serieInput && <List type="search/serie" serie={searchSerie} />}
+      {serieInput && <List type="serie/search" serie={searchSerie} />}
       {searchedSerieLoading && (
         <div className="mt-10 flex h-screen items-center justify-center">
           <Loader />

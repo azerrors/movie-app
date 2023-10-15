@@ -1,5 +1,5 @@
 import { useMovie } from "../../contexts/movieContext";
-import Button from "../../ui/Button";
+
 import List from "../../ui/List";
 import Loader from "../../ui/Loader";
 
@@ -14,14 +14,14 @@ function MovieGenreSection({ movieWithGenre, genreLoading }) {
             Current Page: {genrePage}
           </h3>
         )} */}
-        {movieGenre && <List type="genre/movie" movie={movieWithGenre} />}
+        {movieGenre && <List type="movie/genre" movie={movieWithGenre} />}
         {genreLoading && (
           <div className="mt-10 flex h-screen items-center justify-center">
             <Loader />
           </div>
         )}
       </div>
-      {movieGenre && !movieInput && !movieYear && !movieVote && (
+      {/* {movieGenre && !movieInput && !movieYear && !movieVote && (
         <div className="m-5 flex justify-end gap-2">
           {genrePage !== 1 && (
             <Button
@@ -38,7 +38,7 @@ function MovieGenreSection({ movieWithGenre, genreLoading }) {
             Next
           </Button>
         </div>
-      )}
+      )} */}
     </div>
   );
 }

@@ -6,7 +6,7 @@ function MovieVoteSection({ movieWithVoteAverage, voteAverageLoading }) {
   const { movieVote } = useMovie();
   return (
     <div>
-      {movieVote && <List type="vote/movie" movie={movieWithVoteAverage} />}
+      {movieVote && <List type="movie/vote" movie={movieWithVoteAverage} />}
       {voteAverageLoading && (
         <div className="mt-10 flex h-screen items-center justify-center">
           <Loader />

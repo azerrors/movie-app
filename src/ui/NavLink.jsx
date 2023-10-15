@@ -1,9 +1,9 @@
-import React from "react";
 import { Link } from "react-router-dom";
 
 function NavLink() {
   const linkStyle =
     "uppercase tracking-wider  text-xs md:text-lg hover:border-b p-1 font-medium text-stone-300 hover:text-slate-200 transition-all duration-200";
+
   return (
     <ul className="flex justify-end md:gap-8 ">
       <li>

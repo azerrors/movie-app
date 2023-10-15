@@ -1,6 +1,6 @@
-import React from "react";
 import { useSerie } from "../../contexts/SerieContext";
 import { BsStar } from "react-icons/bs";
+
 import Button from "../../ui/Button";
 
 function SerieVote() {

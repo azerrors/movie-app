@@ -1,5 +1,5 @@
-import React from "react";
 import { useSerie } from "../../contexts/SerieContext";
+
 import Button from "../../ui/Button";
 import Loader from "../../ui/Loader";
 import List from "../../ui/List";
@@ -15,7 +15,7 @@ function SerieGenreSection({ serieWithGenre, serieGenreLoading }) {
             Current Page: {genrePage}
           </h3>
         )} */}
-        {serieGenre && <List type="genre/serie" serie={serieWithGenre} />}
+        {serieGenre && <List type="serie/genre" serie={serieWithGenre} />}
         {serieGenreLoading && (
           <div className="mt-10 flex h-screen items-center justify-center">
             <Loader />

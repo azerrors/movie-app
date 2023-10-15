@@ -1,6 +1,6 @@
-import React from "react";
 import { BsFilm } from "react-icons/bs";
 import { useSerie } from "../../contexts/SerieContext";
+
 import Button from "../../ui/Button";
 
 function SerieYear() {

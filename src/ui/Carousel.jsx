@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const BASE_IMAGE = "https://image.tmdb.org/t/p/w500";
 
 export default function Carousels({ movie, type }) {
-  if (type === "upcoming") {
+  if (type === "movie/upcoming") {
     const { release_date, id, title, vote_average, poster_path } = movie;
     return (
       <Link
@@ -34,7 +34,7 @@ export default function Carousels({ movie, type }) {
       </Link>
     );
   }
-  if (type === "populer") {
+  if (type === "movie/populer") {
     const { release_date, title, vote_average, poster_path, id } = movie;
     return (
       <Link
@@ -64,7 +64,7 @@ export default function Carousels({ movie, type }) {
       </Link>
     );
   }
-  if (type === "trend") {
+  if (type === "movie/trend") {
     const { release_date, title, vote_average, poster_path, id } = movie;
     return (
       <Link
@@ -94,7 +94,7 @@ export default function Carousels({ movie, type }) {
       </Link>
     );
   }
-  if (type === "trend/tv") {
+  if (type === "serie/trend") {
     const { name, vote_average, poster_path, id } = movie;
     return (
       <Link
@@ -120,7 +120,7 @@ export default function Carousels({ movie, type }) {
     );
   }
 
-  if (type === "populer/tv") {
+  if (type === "serie/populer") {
     const { name, vote_average, poster_path, id } = movie;
     return (
       <Link

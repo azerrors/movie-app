@@ -6,7 +6,7 @@ function MovieYearSection({ movieWithYear, yearLoading }) {
   const { movieYear } = useMovie();
   return (
     <div>
-      {movieYear && <List type="year/movie" movie={movieWithYear} />}
+      {movieYear && <List type="movie/year" movie={movieWithYear} />}
       {yearLoading && (
         <div className="mt-10 flex h-screen items-center justify-center">
           <Loader />

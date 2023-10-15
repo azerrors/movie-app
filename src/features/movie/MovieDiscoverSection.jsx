@@ -16,7 +16,7 @@ function MovieDiscoverSection({ discoverMovie, discoverMovieLoading }) {
     <div className="flex flex-col">
       <div>
         {!movieInput && !movieGenre && !movieYear && !movieVote && (
-          <List type="discover/movie" movie={discoverMovie} />
+          <List type="movie/discover" movie={discoverMovie} />
         )}
         {discoverMovieLoading && (
           <div className="mt-10 flex h-screen items-center justify-center">
@@ -25,7 +25,7 @@ function MovieDiscoverSection({ discoverMovie, discoverMovieLoading }) {
         )}
       </div>
 
-      {!movieInput && !movieGenre && !movieYear && !movieVote && (
+      {/* {!movieInput && !movieGenre && !movieYear && !movieVote && (
         <div className="m-5 flex justify-end gap-2">
           {discoverPage !== 1 && (
             <Button
@@ -42,7 +42,7 @@ function MovieDiscoverSection({ discoverMovie, discoverMovieLoading }) {
             Next
           </Button>
         </div>
-      )}
+      )} */}
     </div>
   );
 }

@@ -89,8 +89,6 @@ export async function getSearchedMovies(query) {
   const { results } = await res.json();
   return results;
 }
-
-
 // =================================================================
 export async function getMovieCast(id) {
   const res = await fetch(`${BASE_URL}movie/${id}/credits?api_key=${KEY}`);
@@ -112,3 +110,4 @@ export async function getMovieSimilar(id) {
   const { results } = await res.json();
   return results;
 }
+// =================================================================

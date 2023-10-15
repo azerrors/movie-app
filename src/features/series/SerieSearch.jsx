@@ -1,4 +1,3 @@
-import React from "react";
 import { useSerie } from "../../contexts/SerieContext";
 
 function SerieSearch() {

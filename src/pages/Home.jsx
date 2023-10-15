@@ -80,7 +80,7 @@ function Home() {
       </div>
       <div>
         <h3 className={h3Style}>Upcoming Movies</h3>
-        <List type="upcoming" upcomingMovie={upcomingMovies} />
+        <List type="movie/upcoming" movie={upcomingMovies} />
         <div className=" mr-5 flex  justify-end ">
           <Button type="link" onClick={linkToUpcomingMovies}>
             More
@@ -90,7 +90,7 @@ function Home() {
       {/* // ================================================================= */}
       <div>
         <h3 className={h3Style}>Popular Movies</h3>
-        <List type="populer" populerMovies={populerMovies} />
+        <List type="movie/populer" movie={populerMovies} />
         <div className="mr-5 flex justify-end ">
           <Button type="link" onClick={linkToPopulerMovies}>
             More
@@ -100,7 +100,7 @@ function Home() {
       {/* // ================================================================= */}
       <div>
         <h3 className={h3Style}>Trending Movies</h3>
-        <List type="trend" trendingMovies={trendingMovies} />
+        <List type="movie/trend" movie={trendingMovies} />
         <div className="mr-5 flex justify-end ">
           <Button type="link" onClick={linkToTrendingMovies}>
             More
@@ -110,7 +110,7 @@ function Home() {
       {/* // ================================================================= */}
       <div>
         <h3 className={h3Style}>Trending Series</h3>
-        <List type="trend/tv" trendingTv={trendingTv} />
+        <List type="serie/trend" serie={trendingTv} />
         <div className="mr-5 flex justify-end ">
           <Button type="link" onClick={linkToTrendingSeries}>
             More
@@ -120,7 +120,7 @@ function Home() {
       {/* // ================================================================= */}
       <div>
         <h3 className={h3Style}>Populer Series</h3>
-        <List type="populer/tv" populerTv={populerTv} />
+        <List type="serie/populer" serie={populerTv} />
         <div className="mr-5 flex justify-end ">
           <Button type="link" onClick={linkToPopulerSeries}>
             More

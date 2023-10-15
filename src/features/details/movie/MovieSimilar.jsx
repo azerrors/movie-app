@@ -31,7 +31,7 @@ function MovieSimilar({ movie }) {
       {length === 20 && (
         <div className="mr-5 flex justify-end">
           <Button type="normal" onClick={handleShort}>
-            Short
+            Less
           </Button>
         </div>
       )}

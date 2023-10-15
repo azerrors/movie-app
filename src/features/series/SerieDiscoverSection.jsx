@@ -1,5 +1,5 @@
-import React from "react";
 import { useSerie } from "../../contexts/SerieContext";
+
 import Loader from "../../ui/Loader";
 import List from "../../ui/List";
 import Button from "../../ui/Button";
@@ -13,11 +13,13 @@ function SerieDiscoverSection({ discoverSerie, discoverSerieLoading }) {
     dispatch,
     discoverPage,
   } = useSerie();
+
+
   return (
     <div className="flex flex-col">
       <div>
         {!serieInput && !serieGenre && !serieYear && !serieVote && (
-          <List type="discover/serie" serie={discoverSerie} />
+          <List type="serie/discover" serie={discoverSerie} />
         )}
         {discoverSerieLoading && (
           <div className="mt-10 flex h-screen items-center justify-center">

@@ -4,6 +4,7 @@ import { getTrendingTvWithPage } from "../../services/tvSeries";
 import Button from "../../ui/Button";
 import Header from "../../ui/Header";
 import List from "../../ui/List";
+import Loader from "../../ui/Loader";
 
 function TrendingSeries() {
   const [page, setPage] = useState(1);
@@ -14,11 +15,21 @@ function TrendingSeries() {
   const decreasePage = () => {
     setPage((page) => page - 1);
   };
-  const { data: allTrendingSeries, isLoading: allPopulerMoviesLoading } =
+  const { data: allTrendingSeries, isLoading: allTrendingSeriesLoading } =
     useQuery({
       queryKey: ["upcomingmovies", page],
       queryFn: () => getTrendingTvWithPage(page),
     });
+
+  if (allTrendingSeriesLoading) {
+    return (
+      <div>
+        <div className="mt-10 flex h-screen items-center justify-center">
+          <Loader />
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="h-full text-white">
       <Header />
@@ -30,7 +41,7 @@ function TrendingSeries() {
           Page: {page}
         </h2>
       </div>
-      <List type="trending/series/all" allTrendingSeries={allTrendingSeries} />
+      <List type="serie/trending/all" serie={allTrendingSeries} />
       <div className="mr-8 flex justify-end gap-5 md:mr-28">
         {page !== 1 && (
           <Button type="normal" onClick={decreasePage}>

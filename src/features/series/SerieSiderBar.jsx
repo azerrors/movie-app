@@ -1,6 +1,6 @@
-import React from "react";
 import { useSerie } from "../../contexts/SerieContext";
 import { BsCalendar2Week, BsFilm, BsStar } from "react-icons/bs";
+
 import SerieGenre from "./SerieGenre";
 import SerieYear from "./SerieYear";
 import SerieVote from "./SerieVote";

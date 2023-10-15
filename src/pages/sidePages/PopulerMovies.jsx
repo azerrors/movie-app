@@ -22,7 +22,15 @@ function PopulerMovies() {
       queryFn: () => getPopularMoviesWithPages(page),
     });
 
-  //   if (allPopulerMoviesLoading) return <Loader />;
+  if (allPopulerMoviesLoading) {
+    return (
+      <div>
+        <div className="mt-10 flex h-screen items-center justify-center">
+          <Loader />
+        </div>
+      </div>
+    );
+  }
   return (
     <div className="h-full text-white">
       <Header />
@@ -34,7 +42,7 @@ function PopulerMovies() {
           Page: {page}
         </h2>
       </div>
-      <List type="populer/all" allPopulerMovies={allPopulerMovies} />
+      <List type="movie/populer/all" movie={allPopulerMovies} />
       <div className="mr-8 flex justify-end gap-5 md:mr-28">
         {page !== 1 && (
           <Button type="normal" onClick={decreasePage}>

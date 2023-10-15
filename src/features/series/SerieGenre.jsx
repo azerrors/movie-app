@@ -1,9 +1,9 @@
 import { useQuery } from "@tanstack/react-query";
-import React from "react";
-import { getSerieGenres } from "../../services/OtherApi";
 import { useSerie } from "../../contexts/SerieContext";
-import Button from "../../ui/Button";
+
 import { BsFilm } from "react-icons/bs";
+import { getSerieGenres } from "../../services/OtherApi";
+import Button from "../../ui/Button";
 
 function SerieGenre() {
   const { dispatch } = useSerie();

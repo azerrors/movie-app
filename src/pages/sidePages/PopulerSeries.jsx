@@ -4,6 +4,7 @@ import { getPopulerTvWithPage } from "../../services/tvSeries";
 import Button from "../../ui/Button";
 import Header from "../../ui/Header";
 import List from "../../ui/List";
+import Loader from "../../ui/Loader";
 
 function PopulerSeries() {
   const [page, setPage] = useState(1);
@@ -14,24 +15,35 @@ function PopulerSeries() {
   const decreasePage = () => {
     setPage((page) => page - 1);
   };
-  const { data: allPopulerSeries, isLoading: allPopulerMoviesLoading } =
+  const { data: allPopulerSeries, isLoading: allPopulerSeriesLoading } =
     useQuery({
       queryKey: ["populerseries", page],
       queryFn: () => getPopulerTvWithPage(page),
     });
+
+  if (allPopulerSeriesLoading) {
+    return (
+      <div>
+        <div className="mt-10 flex h-screen items-center justify-center">
+          <Loader />
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="h-full text-white">
       <Header />
       <div className="flex justify-between border-b  border-stone-300 ">
-        <h3 className="mt-5 p-3 md:text-2xl uppercase tracking-widest text-white shadow-sm">
+        <h3 className="mt-5 p-3 uppercase tracking-widest text-white shadow-sm md:text-2xl">
           Populer Series
         </h3>
-        <h2 className="md:mr-10 mt-5 p-3 md:text-2xl uppercase tracking-widest text-white shadow-sm">
+        <h2 className="mt-5 p-3 uppercase tracking-widest text-white shadow-sm md:mr-10 md:text-2xl">
           Page: {page}
         </h2>
       </div>
-      <List type="populer/series/all" allPopulerSeries={allPopulerSeries} />
-      <div className="md:mr-28 mr-8 flex justify-end gap-5">
+      <List type="serie/populer/all" serie={allPopulerSeries} />
+      <div className="mr-8 flex justify-end gap-5 md:mr-28">
         {page !== 1 && (
           <Button type="normal" onClick={decreasePage}>
             Prev
