@@ -9,7 +9,6 @@ import {
 } from "../../../services/tvSeries";
 import Header from "../../../ui/Header";
 import SerieGenre from "./SerieGenre";
-import MovieCast from "../movie/MovieCast";
 import SerieVideo from "./SerieVideo";
 import Button from "../../../ui/Button";
 import SerieImage from "./SerieImage";
@@ -56,6 +55,7 @@ function SerieDetailSection({ serieID }) {
     "text-stone-100 absolute md:top-64 top-[67%] text-md md:w-[40rem] bg-gray-900/50 p-3 rounded-lg text-center p-3 md:right-80 md:text-sm  ";
   const imgStyle =
     "absolute animate-moveInRight w-48 right-[5rem] top-36  md:left-96 md:top-48 md:w-72 rounded-lg ";
+  console.log(serieDetails);
 
   const {
     original_language,
@@ -65,6 +65,8 @@ function SerieDetailSection({ serieID }) {
     first_air_date,
     name,
     vote_average,
+    number_of_episodes,
+    number_of_seasons,
     overview,
   } = serieDetails ? serieDetails : [];
 
@@ -125,10 +127,14 @@ function SerieDetailSection({ serieID }) {
             {first_air_date}
           </span>
 
-          <div>
-            <h4 className={h4Style}>{serieDetails && name}</h4>
-            <p className={pStyle}>{serieDetails && overview}</p>
-          </div>
+          {serieDetails && (
+            <div>
+              <h4
+                className={h4Style}
+              >{`${name}(${number_of_seasons}S - ${number_of_episodes}E)`}</h4>
+              <p className={pStyle}>{overview}</p>
+            </div>
+          )}
 
           <div className="absolute left-[43.5rem] top-48">
             <ul className="mt-2 flex flex-wrap items-center justify-center gap-2">

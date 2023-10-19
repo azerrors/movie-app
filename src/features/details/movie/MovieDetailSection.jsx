@@ -25,7 +25,7 @@ function MovieDetailSection({ movieID }) {
   const [image, setImage] = useState(false);
   const [video, setVideo] = useState(false);
 
-  const { data: movieDetails , isLoading:movieDetailsLoading } = useQuery({
+  const { data: movieDetails, isLoading: movieDetailsLoading } = useQuery({
     queryKey: ["movieid", movieID],
     queryFn: () => getMovieDetails(movieID),
   });
@@ -51,7 +51,7 @@ function MovieDetailSection({ movieID }) {
   const h4Style =
     "absolute p-1 top-20 text-md text-center w-screen md:rounded-md md:bg-gray-900/40 p-2 animate-moveInLeft md:text-2xl uppercase font-semibold tracking-widest text-white md:top-32";
   const pStyle =
-    "text-stone-100 absolute md:top-64 top-[67%] text-md md:w-[40rem] bg-gray-900/50 p-3 rounded-lg text-center p-3 md:right-80 md:text-sm  ";
+    "text-stone-100  absolute md:top-64 top-[68.5%] text-md md:w-[40rem] bg-gray-900/50 p-3 rounded-lg text-center p-3 md:right-80 md:text-sm  ";
   const imgStyle =
     "absolute animate-moveInRight w-48 right-[5rem] top-36  md:left-96 md:top-48 md:w-72 rounded-lg ";
 
@@ -115,9 +115,9 @@ function MovieDetailSection({ movieID }) {
 
           <div>
             <h4 className={h4Style}>{movieDetails && title}</h4>
-            {overview && <p className={pStyle}>{overview}</p>}
+            <div className="overflow-auto">{overview && <p className={pStyle}>{overview}</p>}</div>
           </div>
-          <div className="absolute left-[43.5rem] top-48">
+          <div className="absolute left-[4rem] hidden md:block top-28 md:left-[43.5rem] md:top-48">
             <ul className="mt-2 flex flex-wrap items-center justify-center gap-2">
               {genres &&
                 genres.map((genre) => {
@@ -126,7 +126,7 @@ function MovieDetailSection({ movieID }) {
             </ul>
           </div>
 
-          {movieCast?.length > 0 && (
+          {movieCast?.length !== 0 && (
             <div>
               <div className="absolute hidden p-1 md:right-[27.8rem] md:top-[27.8rem]  md:block">
                 <h3 className=" border-stone-200 p-1 text-2xl uppercase  text-white">
@@ -134,7 +134,7 @@ function MovieDetailSection({ movieID }) {
                 </h3>
                 <ul className="mt-2 flex flex-wrap items-center justify-center gap-2">
                   {movieCast?.slice(0, 5)?.map((cast) => {
-                    return <MovieCast  key={cast.id} cast={cast} />;
+                    return <MovieCast key={cast.id} cast={cast} />;
                   })}
                 </ul>
               </div>

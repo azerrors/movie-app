@@ -15,6 +15,7 @@ import UpcomingMovies from "./pages/sidePages/UpcomingMovies";
 import TrendingMovies from "./pages/sidePages/TrendingMovies";
 import TrendingSeries from "./pages/sidePages/TrendingSeries";
 import PopulerSeries from "./pages/sidePages/PopulerSeries";
+import { ScrollToTop } from "./ui/ScrollToTop";
 
 const queryClient = new QueryClient();
 
@@ -25,6 +26,7 @@ function App() {
       <BrowserRouter>
         <SerieProvider>
           <MovieProvider>
+            <ScrollToTop />
             <Routes>
               <Route element={<AppLayout />}>
                 <Route element={<Navigate replace to="/" />} />

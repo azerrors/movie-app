@@ -87,7 +87,7 @@ function PeopleDetailSection({ peopleId }) {
             </div>
             <div className="group">
               {popularity && (
-                <span className="absolute right-16 top-0 text-lg text-yellow-300 md:right-2">
+                <span className="absolute right-20 top-0 text-lg text-yellow-300 md:right-2">
                   {Math.floor(popularity)}
                 </span>
               )}
@@ -139,30 +139,32 @@ function PeopleDetailSection({ peopleId }) {
           name={name}
         />
       </div>
-      <div>
-        <h3 className="p-2 flex text-xl gap-2 items-center font-semibold uppercase tracking-widest  text-white">
-          <BiMovie className="text-2xl"/>
-          Known For
-        </h3>
-        <List type="people/moviecredits" movie={newMovieArray} />
+      {peopleMovieCredits?.length !== 0 && (
         <div>
-          {length === 8 && (
-            <div className="mr-5 flex justify-end">
-              <Button type="normal" onClick={handleMore}>
-                More
-              </Button>
-            </div>
-          )}
+          <h3 className="flex items-center gap-2 p-2 text-xl font-semibold uppercase tracking-widest  text-white">
+            <BiMovie className="text-2xl" />
+            Known For
+          </h3>
+          <List type="people/moviecredits" movie={newMovieArray} />
+          <div>
+            {length === 8 && (
+              <div className="mr-5 flex justify-end">
+                <Button type="normal" onClick={handleMore}>
+                  More
+                </Button>
+              </div>
+            )}
 
-          {length === peopleMovieCredits?.length && (
-            <div className="mr-5 flex justify-end">
-              <Button type="normal" onClick={handleShort}>
-                Less
-              </Button>
-            </div>
-          )}
+            {length === peopleMovieCredits?.length && (
+              <div className="mr-5 flex justify-end">
+                <Button type="normal" onClick={handleShort}>
+                  Less
+                </Button>
+              </div>
+            )}
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

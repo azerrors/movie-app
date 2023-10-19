@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 const BASE_IMAGE = "https://image.tmdb.org/t/p/w500";
 
 function CarouselFull({ images, info }) {
-  console.log(info);
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const increaseIndex = () => {
