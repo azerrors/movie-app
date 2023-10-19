@@ -53,7 +53,7 @@ function MovieDetailSection({ movieID }) {
   const pStyle =
     "text-stone-100  absolute md:top-64 top-[68.5%] text-md md:w-[40rem] bg-gray-900/50 p-3 rounded-lg text-center p-3 md:right-80 md:text-sm  ";
   const imgStyle =
-    "absolute animate-moveInRight w-48 right-[5rem] top-36  md:left-96 md:top-48 md:w-72 rounded-lg ";
+    "absolute animate-moveInRight w-48 right-[5rem] top-36 md:h-[27rem] md:left-96 md:top-48 md:w-72 rounded-lg ";
 
   const {
     backdrop_path,
@@ -98,11 +98,15 @@ function MovieDetailSection({ movieID }) {
           <div className="absolute top-0  w-full bg-slate-900/10 md:right-1">
             <Header />
           </div>
-          <img
-            className={imgStyle}
-            src={`${BASE_IMAGE}${poster_path}`}
-            alt=""
-          />
+          {poster_path ? (
+            <img
+              className={imgStyle}
+              src={`${BASE_IMAGE}${poster_path}`}
+              alt=""
+            />
+          ) : (
+            <img className={imgStyle} src="/public/imagenotfound.jpg" alt="" />
+          )}
           <span className="absolute right-[5rem] top-36  text-lg text-white md:left-96 md:top-48 md:text-xl">
             {Math.floor(vote_average)}⭐
           </span>
@@ -115,9 +119,11 @@ function MovieDetailSection({ movieID }) {
 
           <div>
             <h4 className={h4Style}>{movieDetails && title}</h4>
-            <div className="overflow-auto">{overview && <p className={pStyle}>{overview}</p>}</div>
+            <div className="overflow-auto">
+              {overview && <p className={pStyle}>{overview}</p>}
+            </div>
           </div>
-          <div className="absolute left-[4rem] hidden md:block top-28 md:left-[43.5rem] md:top-48">
+          <div className="absolute left-[4rem] top-28 hidden md:left-[43.5rem] md:top-48 md:block">
             <ul className="mt-2 flex flex-wrap items-center justify-center gap-2">
               {genres &&
                 genres.map((genre) => {

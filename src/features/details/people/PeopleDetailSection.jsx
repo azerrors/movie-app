@@ -87,7 +87,7 @@ function PeopleDetailSection({ peopleId }) {
             </div>
             <div className="group">
               {popularity && (
-                <span className="absolute right-20 top-0 text-lg text-yellow-300 md:right-2">
+                <span className="absolute right-20 top-0 text-lg text-stone-300 md:right-2">
                   {Math.floor(popularity)}
                 </span>
               )}
