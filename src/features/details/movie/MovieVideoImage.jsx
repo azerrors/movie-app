@@ -2,7 +2,7 @@ const BASE_VIDEO = "https://www.youtube.com/embed/";
 
 function MovieVideoImage({ video }) {
   return (
-    <div className="relative md:w-6/12 md:h-96 w-screen h-72">
+    <div className="relative md:w-6/12 md:h-96 w-80  h-72">
       <iframe
         className="absolute top-0 left-0"
         height="100%"

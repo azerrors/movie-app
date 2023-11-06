@@ -146,23 +146,26 @@ function PeopleDetailSection({ peopleId }) {
             Known For
           </h3>
           <List type="people/moviecredits" movie={newMovieArray} />
-          <div>
-            {length === 8 && (
-              <div className="mr-5 flex justify-end">
-                <Button type="normal" onClick={handleMore}>
-                  More
-                </Button>
-              </div>
-            )}
 
-            {length === peopleMovieCredits?.length && (
-              <div className="mr-5 flex justify-end">
-                <Button type="normal" onClick={handleShort}>
-                  Less
-                </Button>
-              </div>
-            )}
-          </div>
+          {peopleMovieCredits?.length > 8 && (
+            <div>
+              {length === 8 && (
+                <div className="mr-5 flex justify-end">
+                  <Button type="normal" onClick={handleMore}>
+                    More
+                  </Button>
+                </div>
+              )}
+
+              {length === peopleMovieCredits?.length && (
+                <div className="mr-5 flex justify-end">
+                  <Button type="normal" onClick={handleShort}>
+                    Less
+                  </Button>
+                </div>
+              )}
+            </div>
+          )}
         </div>
       )}
     </div>
