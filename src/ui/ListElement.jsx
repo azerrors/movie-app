@@ -11,18 +11,18 @@ function ListElement({ type, movie, serie }) {
     return (
       <Link
         to={`/${id}?movieId=${id}`}
-        className="mt-5 w-32 cursor-pointer rounded-lg transition-all duration-300 hover:border hover:border-stone-300 md:h-96 md:w-56"
+        className="group mt-5 w-32 cursor-pointer rounded-lg transition-all duration-300 md:h-96 md:w-56"
       >
         {poster_path ? (
           <img
             src={`${BASE_IMAGE}${poster_path}`}
             alt=""
-            className="w-32 rounded-lg md:h-72 md:w-72"
+            className="w-32  rounded-lg    transition-all duration-300 group-hover:-translate-y-2     md:h-72 md:w-72"
           />
         ) : (
           <img
             src="/public/imagenotfound.jpg"
-            className="w-32 rounded-lg md:h-72 md:w-72"
+            className="w-32 rounded-lg    transition-all duration-300 group-hover:-translate-y-2     md:h-72 md:w-72"
             alt=""
           />
         )}
@@ -32,7 +32,7 @@ function ListElement({ type, movie, serie }) {
               {title}
             </h2>
             <span className="mr-2 mt-2 font-semibold text-stone-300">
-              {vote_average}⭐
+              {vote_average.toFixed(1)}⭐
             </span>
           </div>
           <div className="md:text-md mr-2 mt-2 flex justify-end text-sm md:mt-5">
@@ -50,17 +50,17 @@ function ListElement({ type, movie, serie }) {
     return (
       <Link
         to={`/${id}?movieId=${id}`}
-        className="mt-5 w-32 cursor-pointer rounded-lg transition-all duration-300 hover:border hover:border-stone-300 md:h-96 md:w-56"
+        className="group mt-5 w-32 cursor-pointer rounded-lg transition-all duration-300 md:h-96 md:w-56"
       >
         {poster_path ? (
           <img
             src={`${BASE_IMAGE}${poster_path}`}
             alt=""
-            className="w-32 rounded-lg md:h-72 md:w-72"
+            className="w-32 rounded-lg    transition-all duration-300 group-hover:-translate-y-2     md:h-72 md:w-72"
           />
         ) : (
           <img
-            className="w-32 rounded-lg md:h-72 md:w-72"
+            className="w-32 rounded-lg    transition-all duration-300 group-hover:-translate-y-2     md:h-72 md:w-72"
             src="/public/imagenotfound.jpg"
             alt=""
           />
@@ -71,7 +71,7 @@ function ListElement({ type, movie, serie }) {
               {title}
             </h2>
             <span className="mr-2 mt-2 font-semibold text-stone-300">
-              {vote_average}⭐
+              {vote_average.toFixed(1)}⭐
             </span>
           </div>
           <div className="md:text-md mr-2 mt-2 flex justify-end text-sm md:mt-5">
@@ -89,18 +89,18 @@ function ListElement({ type, movie, serie }) {
     return (
       <Link
         to={`/${id}?movieId=${id}`}
-        className="mt-5 w-32 cursor-pointer rounded-lg transition-all duration-300 hover:border hover:border-stone-300 md:h-96 md:w-56"
+        className="group mt-5 w-32 cursor-pointer rounded-lg transition-all duration-300 md:h-96 md:w-56"
       >
         {poster_path ? (
           <img
             src={`${BASE_IMAGE}${poster_path}`}
             alt=""
-            className="w-32 rounded-lg md:h-72 md:w-72"
+            className="w-32 rounded-lg    transition-all duration-300 group-hover:-translate-y-2     md:h-72 md:w-72"
           />
         ) : (
           <img
             src="/public/imagenotfound.jpg"
-            className="w-32 rounded-lg md:h-72 md:w-72"
+            className="w-32 rounded-lg    transition-all duration-300 group-hover:-translate-y-2     md:h-72 md:w-72"
             alt=""
           />
         )}
@@ -110,7 +110,7 @@ function ListElement({ type, movie, serie }) {
               {title}
             </h2>
             <span className="mr-2 mt-2 font-semibold text-stone-300">
-              {vote_average}⭐
+              {vote_average.toFixed(1)}⭐
             </span>
           </div>
           <div className="md:text-md mr-2 mt-2 flex justify-end text-sm md:mt-5">
@@ -128,18 +128,18 @@ function ListElement({ type, movie, serie }) {
     return (
       <Link
         to={`/${id}?movieId=${id}`}
-        className="mt-5 w-32 cursor-pointer rounded-lg transition-all duration-300 hover:border hover:border-stone-300 md:h-96 md:w-48"
+        className="group mt-5 w-32 cursor-pointer rounded-lg transition-all duration-300 md:h-96 md:w-48"
       >
         {poster_path ? (
           <img
             src={`${BASE_IMAGE}${poster_path}`}
             alt=""
-            className="w-32 rounded-lg md:h-72 md:w-72"
+            className="w-32 rounded-lg    transition-all duration-300 group-hover:-translate-y-2     md:h-72 md:w-72"
           />
         ) : (
           <img
             src="/public/imagenotfound.jpg"
-            className="w-32 rounded-lg md:h-72 md:w-72"
+            className="w-32 rounded-lg    transition-all duration-300 group-hover:-translate-y-2     md:h-72 md:w-72"
             alt=""
           />
         )}
@@ -149,7 +149,7 @@ function ListElement({ type, movie, serie }) {
               {title}
             </h2>
             <span className="mr-2 mt-2 font-semibold text-stone-300">
-              {vote_average}⭐
+              {vote_average.toFixed(1)}⭐
             </span>
           </div>
           <div className="md:text-md mr-2 mt-2 flex justify-end text-sm md:mt-5">
@@ -167,17 +167,17 @@ function ListElement({ type, movie, serie }) {
     return (
       <Link
         to={`/${id}?movieId=${id}`}
-        className="mt-5 w-32 cursor-pointer rounded-lg transition-all duration-300 hover:border hover:border-stone-300 md:h-96 md:w-48"
+        className="group mt-5 w-32 cursor-pointer rounded-lg transition-all duration-300 md:h-96 md:w-48"
       >
         {poster_path ? (
           <img
             src={`${BASE_IMAGE}${poster_path}`}
             alt=""
-            className="w-32 rounded-lg md:h-72 md:w-72"
+            className="w-32 rounded-lg    transition-all duration-300 group-hover:-translate-y-2     md:h-72 md:w-72"
           />
         ) : (
           <img
-            className="w-32 rounded-lg md:h-72 md:w-72"
+            className="w-32 rounded-lg    transition-all duration-300 group-hover:-translate-y-2     md:h-72 md:w-72"
             src="/public/imagenotfound.jpg"
             alt=""
           />
@@ -188,7 +188,7 @@ function ListElement({ type, movie, serie }) {
               {title}
             </h2>
             <span className="mr-2 mt-2 font-semibold text-stone-300">
-              {vote_average}⭐
+              {vote_average.toFixed(1)}⭐
             </span>
           </div>
           <div className="md:text-md mr-2 mt-2 flex justify-end text-sm md:mt-5">
@@ -206,18 +206,18 @@ function ListElement({ type, movie, serie }) {
     return (
       <Link
         to={`/${id}?movieId=${id}`}
-        className="mt-5 w-32 cursor-pointer rounded-lg transition-all duration-300 hover:border hover:border-stone-300 md:h-96 md:w-48"
+        className="group mt-5 w-32 cursor-pointer rounded-lg transition-all duration-300 md:h-96 md:w-48"
       >
         {poster_path ? (
           <img
             src={`${BASE_IMAGE}${poster_path}`}
             alt=""
-            className="w-32 rounded-lg md:h-72 md:w-72"
+            className="w-32 rounded-lg    transition-all duration-300 group-hover:-translate-y-2     md:h-72 md:w-72"
           />
         ) : (
           <img
             src="/public/imagenotfound.jpg"
-            className="w-32 rounded-lg md:h-72 md:w-72"
+            className="w-32 rounded-lg    transition-all duration-300 group-hover:-translate-y-2     md:h-72 md:w-72"
             alt=""
           />
         )}
@@ -227,7 +227,7 @@ function ListElement({ type, movie, serie }) {
               {title}
             </h2>
             <span className="mr-2 mt-2 font-semibold text-stone-300">
-              {vote_average}⭐
+              {vote_average.toFixed(1)}⭐
             </span>
           </div>
           <div className="md:text-md mr-2 mt-2 flex justify-end text-sm md:mt-5">
@@ -245,18 +245,18 @@ function ListElement({ type, movie, serie }) {
     return (
       <Link
         to={`/${id}?movieId=${id}`}
-        className="mt-5 w-32 cursor-pointer rounded-lg transition-all duration-300 hover:border hover:border-stone-300 md:h-96 md:w-48"
+        className="group mt-5 w-32 cursor-pointer rounded-lg transition-all duration-300 md:h-96 md:w-48"
       >
         {poster_path ? (
           <img
             src={`${BASE_IMAGE}${poster_path}`}
             alt=""
-            className="w-32 rounded-lg md:h-72 md:w-72"
+            className="w-32 rounded-lg    transition-all duration-300 group-hover:-translate-y-2     md:h-72 md:w-72"
           />
         ) : (
           <img
             src="/public/imagenotfound.jpg"
-            className="w-32 rounded-lg md:h-72 md:w-72"
+            className="w-32 rounded-lg    transition-all duration-300 group-hover:-translate-y-2     md:h-72 md:w-72"
             alt=""
           />
         )}
@@ -266,7 +266,7 @@ function ListElement({ type, movie, serie }) {
               {title}
             </h2>
             <span className="mr-2 mt-2 font-semibold text-stone-300">
-              {vote_average}⭐
+              {vote_average.toFixed(1)}⭐
             </span>
           </div>
           <div className="md:text-md mr-2 mt-2 flex justify-end text-sm md:mt-5">
@@ -284,18 +284,18 @@ function ListElement({ type, movie, serie }) {
     return (
       <Link
         to={`/${id}?movieId=${id}`}
-        className="mt-5 w-32 cursor-pointer rounded-lg transition-all duration-300 hover:border hover:border-stone-300 md:h-96 md:w-48"
+        className="group mt-5 w-32 cursor-pointer rounded-lg transition-all duration-300 md:h-96 md:w-48"
       >
         {poster_path ? (
           <img
             src={`${BASE_IMAGE}${poster_path}`}
             alt=""
-            className="w-32 rounded-lg md:h-72 md:w-72"
+            className="w-32 rounded-lg    transition-all duration-300 group-hover:-translate-y-2     md:h-72 md:w-72"
           />
         ) : (
           <img
             src="/public/imagenotfound.jpg"
-            className="w-32 rounded-lg md:h-72 md:w-72"
+            className="w-32 rounded-lg    transition-all duration-300 group-hover:-translate-y-2     md:h-72 md:w-72"
             alt=""
           />
         )}
@@ -305,7 +305,7 @@ function ListElement({ type, movie, serie }) {
               {title}
             </h2>
             <span className="mr-2 mt-2 font-semibold text-stone-300">
-              {vote_average}⭐
+              {vote_average.toFixed(1)}⭐
             </span>
           </div>
           <div className="md:text-md mr-2 mt-2 flex justify-end text-sm md:mt-5">
@@ -323,18 +323,18 @@ function ListElement({ type, movie, serie }) {
     return (
       <Link
         to={`/${id}?movieId=${id}`}
-        className="mt-5 w-32 cursor-pointer rounded-lg transition-all duration-300 hover:border hover:border-stone-300 md:h-96 md:w-48"
+        className="group mt-5 w-32 cursor-pointer rounded-lg transition-all duration-300 md:h-96 md:w-48"
       >
         {poster_path ? (
           <img
             src={`${BASE_IMAGE}${poster_path}`}
             alt=""
-            className="w-32 rounded-lg md:h-72 md:w-72"
+            className="w-32 rounded-lg    transition-all duration-300 group-hover:-translate-y-2     md:h-72 md:w-72"
           />
         ) : (
           <img
             src="/public/imagenotfound.jpg"
-            className="w-32 rounded-lg md:h-72 md:w-72"
+            className="w-32 rounded-lg    transition-all duration-300 group-hover:-translate-y-2     md:h-72 md:w-72"
             alt=""
           />
         )}
@@ -344,7 +344,7 @@ function ListElement({ type, movie, serie }) {
               {title}
             </h2>
             <span className="mr-2 mt-2 font-semibold text-stone-300">
-              {vote_average}⭐
+              {vote_average.toFixed(1)}⭐
             </span>
           </div>
           <div className="md:text-md mr-2 mt-2 flex justify-end text-sm md:mt-5">
@@ -363,18 +363,18 @@ function ListElement({ type, movie, serie }) {
     return (
       <Link
         to={`/${id}?serieId=${id}`}
-        className="mt-5 w-32 cursor-pointer rounded-lg transition-all duration-300 hover:border hover:border-stone-300 md:h-96 md:w-56"
+        className="group mt-5 w-32 cursor-pointer rounded-lg transition-all duration-300 md:h-96 md:w-56"
       >
         {poster_path ? (
           <img
             src={`${BASE_IMAGE}${poster_path}`}
             alt=""
-            className="w-32 rounded-lg md:h-72 md:w-72"
+            className="w-32 rounded-lg    transition-all duration-300 group-hover:-translate-y-2     md:h-72 md:w-72"
           />
         ) : (
           <img
             src="/public/imagenotfound.jpg"
-            className="w-32 rounded-lg md:h-72 md:w-72"
+            className="w-32 rounded-lg    transition-all duration-300 group-hover:-translate-y-2     md:h-72 md:w-72"
             alt=""
           />
         )}
@@ -384,7 +384,7 @@ function ListElement({ type, movie, serie }) {
               {name}
             </h2>
             <span className="mr-2 mt-2 font-semibold text-stone-300">
-              {vote_average}⭐
+              {vote_average.toFixed(1)}⭐
             </span>
           </div>
         </div>
@@ -397,18 +397,18 @@ function ListElement({ type, movie, serie }) {
     return (
       <Link
         to={`/${id}?serieId=${id}`}
-        className="mt-5 w-32 cursor-pointer rounded-lg transition-all duration-300 hover:border hover:border-stone-300 md:h-96 md:w-56"
+        className="group mt-5 w-32 cursor-pointer rounded-lg transition-all duration-300 md:h-96 md:w-56"
       >
         {poster_path ? (
           <img
             src={`${BASE_IMAGE}${poster_path}`}
             alt=""
-            className="w-32 rounded-lg md:h-72 md:w-72"
+            className="w-32 rounded-lg    transition-all duration-300 group-hover:-translate-y-2     md:h-72 md:w-72"
           />
         ) : (
           <img
             src="/public/imagenotfound.jpg"
-            className="w-32 rounded-lg md:h-72 md:w-72"
+            className="w-32 rounded-lg    transition-all duration-300 group-hover:-translate-y-2     md:h-72 md:w-72"
             alt=""
           />
         )}
@@ -418,7 +418,7 @@ function ListElement({ type, movie, serie }) {
               {name}
             </h2>
             <span className="mr-2 mt-2 font-semibold text-stone-300">
-              {vote_average}⭐
+              {vote_average.toFixed(1)}⭐
             </span>
           </div>
         </div>
@@ -432,18 +432,18 @@ function ListElement({ type, movie, serie }) {
     return (
       <Link
         to={`/${id}?serieId=${id}`}
-        className="mt-5 w-32 cursor-pointer rounded-lg transition-all duration-300 hover:border hover:border-stone-300 md:h-96 md:w-48"
+        className="group mt-5 w-32 cursor-pointer rounded-lg transition-all duration-300 md:h-96 md:w-48"
       >
         {poster_path ? (
           <img
             src={`${BASE_IMAGE}${poster_path}`}
             alt=""
-            className="w-32 rounded-lg md:h-72 md:w-72"
+            className="w-32 rounded-lg    transition-all duration-300 group-hover:-translate-y-2     md:h-72 md:w-72"
           />
         ) : (
           <img
             src="/public/imagenotfound.jpg"
-            className="w-32 rounded-lg md:h-72 md:w-72"
+            className="w-32 rounded-lg    transition-all duration-300 group-hover:-translate-y-2     md:h-72 md:w-72"
             alt=""
           />
         )}
@@ -453,7 +453,7 @@ function ListElement({ type, movie, serie }) {
               {original_name}
             </h2>
             <span className="mr-2 mt-2 font-semibold text-stone-300">
-              {vote_average}⭐
+              {vote_average.toFixed(1)}⭐
             </span>
           </div>
           <div className="md:text-md mr-2 mt-2 flex justify-end text-sm md:mt-5">
@@ -472,18 +472,18 @@ function ListElement({ type, movie, serie }) {
     return (
       <Link
         to={`/${id}?serieId=${id}`}
-        className="mt-5 w-32 cursor-pointer rounded-lg transition-all duration-300 hover:border hover:border-stone-300 md:h-96 md:w-48"
+        className="group mt-5 w-32 cursor-pointer rounded-lg transition-all duration-300 md:h-96 md:w-48"
       >
         {poster_path ? (
           <img
             src={`${BASE_IMAGE}${poster_path}`}
             alt=""
-            className="w-32 rounded-lg md:h-72 md:w-72"
+            className="w-32 rounded-lg    transition-all duration-300 group-hover:-translate-y-2     md:h-72 md:w-72"
           />
         ) : (
           <img
             src="/public/imagenotfound.jpg"
-            className="w-32 rounded-lg md:h-72 md:w-72"
+            className="w-32 rounded-lg    transition-all duration-300 group-hover:-translate-y-2     md:h-72 md:w-72"
             alt=""
           />
         )}
@@ -493,7 +493,7 @@ function ListElement({ type, movie, serie }) {
               {original_name}
             </h2>
             <span className="mr-2 mt-2 font-semibold text-stone-300">
-              {vote_average}⭐
+              {vote_average.toFixed(1)}⭐
             </span>
           </div>
           <div className="md:text-md mr-2 mt-2 flex justify-end text-sm md:mt-5">
@@ -512,18 +512,18 @@ function ListElement({ type, movie, serie }) {
     return (
       <Link
         to={`/${id}?serieId=${id}`}
-        className="mt-5 w-32 cursor-pointer rounded-lg transition-all duration-300 hover:border hover:border-stone-300 md:h-96 md:w-48"
+        className="group mt-5 w-32 cursor-pointer rounded-lg transition-all duration-300 md:h-96 md:w-48"
       >
         {poster_path ? (
           <img
             src={`${BASE_IMAGE}${poster_path}`}
             alt=""
-            className="w-32 rounded-lg md:h-72 md:w-72"
+            className="w-32 rounded-lg    transition-all duration-300 group-hover:-translate-y-2     md:h-72 md:w-72"
           />
         ) : (
           <img
             src="/public/imagenotfound.jpg"
-            className="w-32 rounded-lg md:h-72 md:w-72"
+            className="w-32 rounded-lg    transition-all duration-300 group-hover:-translate-y-2     md:h-72 md:w-72"
             alt=""
           />
         )}
@@ -533,7 +533,7 @@ function ListElement({ type, movie, serie }) {
               {original_name}
             </h2>
             <span className="mr-2 mt-2 font-semibold text-stone-300">
-              {vote_average}⭐
+              {vote_average.toFixed(1)}⭐
             </span>
           </div>
           <div className="md:text-md mr-2 mt-2 flex justify-end text-sm md:mt-5">
@@ -551,18 +551,18 @@ function ListElement({ type, movie, serie }) {
     return (
       <Link
         to={`/${id}?serieId=${id}`}
-        className="mt-5 w-32 cursor-pointer rounded-lg transition-all duration-300 hover:border hover:border-stone-300 md:h-96 md:w-48"
+        className="group mt-5 w-32 cursor-pointer rounded-lg transition-all duration-300 md:h-96 md:w-48"
       >
         {poster_path ? (
           <img
             src={`${BASE_IMAGE}${poster_path}`}
             alt=""
-            className="w-32 rounded-lg md:h-72 md:w-72"
+            className="w-32 rounded-lg    transition-all duration-300 group-hover:-translate-y-2     md:h-72 md:w-72"
           />
         ) : (
           <img
             src="/public/imagenotfound.jpg"
-            className="w-32 rounded-lg md:h-72 md:w-72"
+            className="w-32 rounded-lg    transition-all duration-300 group-hover:-translate-y-2     md:h-72 md:w-72"
             alt=""
           />
         )}
@@ -572,7 +572,7 @@ function ListElement({ type, movie, serie }) {
               {original_name}
             </h2>
             <span className="mr-2 mt-2 font-semibold text-stone-300">
-              {vote_average}⭐
+              {vote_average.toFixed(1)}⭐
             </span>
           </div>
           <div className="md:text-md mr-2 mt-2 flex justify-end text-sm md:mt-5">
@@ -591,18 +591,18 @@ function ListElement({ type, movie, serie }) {
     return (
       <Link
         to={`/${id}?serieId=${id}`}
-        className="mt-5 w-32 cursor-pointer rounded-lg transition-all duration-300 hover:border hover:border-stone-300 md:h-96 md:w-48"
+        className="group mt-5 w-32 cursor-pointer rounded-lg transition-all duration-300 md:h-96 md:w-48"
       >
         {poster_path ? (
           <img
             src={`${BASE_IMAGE}${poster_path}`}
             alt=""
-            className="w-32 rounded-lg md:h-72 md:w-72"
+            className="w-32 rounded-lg    transition-all duration-300 group-hover:-translate-y-2     md:h-72 md:w-72"
           />
         ) : (
           <img
             src="/public/imagenotfound.jpg"
-            className="w-32 rounded-lg md:h-72 md:w-72"
+            className="w-32 rounded-lg    transition-all duration-300 group-hover:-translate-y-2     md:h-72 md:w-72"
             alt=""
           />
         )}
@@ -612,7 +612,7 @@ function ListElement({ type, movie, serie }) {
               {original_name}
             </h2>
             <span className="mr-2 mt-2 font-semibold text-stone-300">
-              {vote_average}⭐
+              {vote_average.toFixed(1)}⭐
             </span>
           </div>
           <div className="md:text-md mr-2 mt-2 flex justify-end text-sm md:mt-5">
@@ -631,18 +631,18 @@ function ListElement({ type, movie, serie }) {
     return (
       <Link
         to={`/${id}?serieId=${id}`}
-        className="mt-5 w-32 cursor-pointer rounded-lg transition-all duration-300 hover:border hover:border-stone-300 md:h-96 md:w-48"
+        className="group mt-5 w-32 cursor-pointer rounded-lg transition-all duration-300 md:h-96 md:w-48"
       >
         {poster_path ? (
           <img
             src={`${BASE_IMAGE}${poster_path}`}
             alt=""
-            className="w-32 rounded-lg md:h-72 md:w-72"
+            className="w-32 rounded-lg    transition-all duration-300 group-hover:-translate-y-2     md:h-72 md:w-72"
           />
         ) : (
           <img
             src="/public/imagenotfound.jpg"
-            className="w-32 rounded-lg md:h-72 md:w-72"
+            className="w-32 rounded-lg    transition-all duration-300 group-hover:-translate-y-2     md:h-72 md:w-72"
             alt=""
           />
         )}
@@ -652,7 +652,7 @@ function ListElement({ type, movie, serie }) {
               {original_name}
             </h2>
             <span className="mr-2 mt-2 font-semibold text-stone-300">
-              {vote_average}⭐
+              {vote_average.toFixed(1)}⭐
             </span>
           </div>
           <div className="md:text-md mr-2 mt-2 flex justify-end text-sm md:mt-5">
@@ -671,18 +671,18 @@ function ListElement({ type, movie, serie }) {
     return (
       <Link
         to={`/${id}?movieId=${id}`}
-        className="mt-5 w-32 cursor-pointer rounded-lg transition-all duration-300 hover:border hover:border-stone-300 md:h-96 md:w-48"
+        className="group mt-5 w-32 cursor-pointer rounded-lg transition-all duration-300 md:h-96 md:w-48"
       >
         {poster_path ? (
           <img
             src={`${BASE_IMAGE}${poster_path}`}
             alt=""
-            className="w-32 rounded-lg md:h-72 md:w-72"
+            className="w-32 rounded-lg    transition-all duration-300 group-hover:-translate-y-2     md:h-72 md:w-72"
           />
         ) : (
           <img
             src="/public/imagenotfound.jpg"
-            className="w-32 rounded-lg md:h-72 md:w-72"
+            className="w-32 rounded-lg    transition-all duration-300 group-hover:-translate-y-2     md:h-72 md:w-72"
             alt=""
           />
         )}
@@ -692,7 +692,7 @@ function ListElement({ type, movie, serie }) {
               {title}
             </h2>
             <span className="mr-2 mt-2 font-semibold text-stone-300">
-              {vote_average}⭐
+              {vote_average.toFixed(1)}⭐
             </span>
           </div>
           <div className="md:text-md mr-2 mt-2 flex justify-end text-sm md:mt-5">

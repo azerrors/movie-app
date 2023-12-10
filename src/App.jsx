@@ -8,7 +8,6 @@ import { SerieProvider } from "./contexts/SerieContext";
 import Details from "./pages/Details";
 import Home from "./pages/Home";
 import Movie from "./pages/Movie";
-import NotPage from "./pages/NotPage";
 import Serie from "./pages/Serie";
 import PopulerMovies from "./pages/sidePages/PopulerMovies";
 import PopulerSeries from "./pages/sidePages/PopulerSeries";
@@ -40,7 +39,7 @@ function App() {
                 <Route path="trending_series" element={<TrendingSeries />} />
                 <Route path="populer_series" element={<PopulerSeries />} />
                 <Route path="/:id" element={<Details />} />
-                <Route path="/*" element={<NotPage />} />
+                {/* <Route path="/*" element={<NotPage />} /> */}
               </Route>
             </Routes>
           </MovieProvider>

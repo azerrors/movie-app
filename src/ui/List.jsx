@@ -1,13 +1,21 @@
 import React from "react";
 import UpcomingCarousel from "./Carousel";
 import ListElement from "./ListElement";
-
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 function List({ type, movie, serie }) {
   //==================================================================
   //==================================================================
+  const settings = {
+    dots: true,
+    infinite: true,
+    slidesToShow: 5,
+    slidesToScroll: 1,
+  };
   if (type === "movie/upcoming") {
     return (
-      <ul className="mt-6 flex flex-wrap justify-center gap-3 ">
+      <ul className="mt-6 flex flex-wrap  gap-3 ">
         {movie?.slice(0, 7)?.map((movie) => {
           return <UpcomingCarousel key={movie.id} movie={movie} type={type} />;
         })}
