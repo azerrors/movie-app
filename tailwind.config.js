@@ -15,13 +15,19 @@ export default {
           "80%": { transform: "translateX(-5px)" },
           "100%": { transform: "translateX(0)" },
         },
+        showOn: {
+          "0%": { opacity: "0" },
+          "100%": { opacity: "1" },
+        },
       },
       animation: {
         moveInLeft: "moveInLeft 2s",
         moveInRight: "moveInRight 2s",
+        showOn: "showOn 1s",
       },
       colors: {
         primary: "#040918",
+        secondary: "#232D3F",
       },
       fontFamily: {
         sans: ["Lato", "sans-serif"],

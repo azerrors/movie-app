@@ -2,6 +2,9 @@ import { createContext, useContext, useReducer } from "react";
 
 const MovieContext = createContext();
 const initialState = {
+  favorites: [],
+  filterInput: "all",
+  showNote: false,
   movieGenreName: "",
   movieGenre: "",
   movieYear: "",
@@ -130,6 +133,28 @@ function reducer(state, action) {
         ...state,
         movieVote: "",
       };
+    // =================================================================================================//
+    case "favorites/add":
+      return {
+        ...state,
+        favorites: [...state.favorites, action.payload],
+      };
+    case "favorites/delete":
+      return {
+        ...state,
+        favorites: state.favorites.filter((fav) => fav.id !== action.payload),
+      };
+    // =================================================================================================//
+    case "filter/add":
+      return {
+        ...state,
+        filterInput: action.payload,
+      };
+    case "note":
+      return {
+        ...state,
+        showNote: !state.showNote,
+      };
     default:
       return {
         ...state,
@@ -150,12 +175,15 @@ function MovieProvider({ children }) {
       discoverPage,
       genrePage,
       yearPage,
+      filterInput,
+      showNote,
+      favorites,
       votePage,
     },
     dispatch,
   ] = useReducer(reducer, initialState);
 
-  console.log(movieYear);
+  console.log(favorites);
   return (
     <MovieContext.Provider
       value={{
@@ -171,7 +199,10 @@ function MovieProvider({ children }) {
         discoverPage,
         genrePage,
         yearPage,
+        filterInput,
         votePage,
+        favorites,
+        showNote,
       }}
     >
       {children}

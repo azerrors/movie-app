@@ -6,6 +6,7 @@ import { MovieProvider } from "./contexts/movieContext";
 import { SerieProvider } from "./contexts/SerieContext";
 
 import Details from "./pages/Details";
+import Favorites from "./pages/Favorites";
 import Home from "./pages/Home";
 import Movie from "./pages/Movie";
 import Serie from "./pages/Serie";
@@ -16,6 +17,10 @@ import TrendingSeries from "./pages/sidePages/TrendingSeries";
 import UpcomingMovies from "./pages/sidePages/UpcomingMovies";
 import AppLayout from "./ui/AppLayout";
 import { ScrollToTop } from "./ui/ScrollToTop";
+import { ToastContainer } from "react-toastify";
+
+import "react-toastify/dist/ReactToastify.css";
+import Note from "./features/favorites/Note";
 
 const queryClient = new QueryClient();
 
@@ -31,6 +36,7 @@ function App() {
               <Route element={<AppLayout />}>
                 <Route element={<Navigate replace to="/" />} />
                 <Route path="/" index element={<Home />} />
+                <Route path="favorites" element={<Favorites />} />
                 <Route path="movie" element={<Movie />}></Route>
                 <Route path="upcoming_movies" element={<UpcomingMovies />} />
                 <Route path="populer_movies" element={<PopulerMovies />} />
@@ -42,6 +48,18 @@ function App() {
                 {/* <Route path="/*" element={<NotPage />} /> */}
               </Route>
             </Routes>
+            <ToastContainer
+              position="bottom-right"
+              autoClose={3000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="colored"
+            />
           </MovieProvider>
         </SerieProvider>
       </BrowserRouter>

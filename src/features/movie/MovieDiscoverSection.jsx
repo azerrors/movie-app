@@ -1,5 +1,4 @@
 import { useMovie } from "../../contexts/movieContext";
-import Button from "../../ui/Button";
 import List from "../../ui/List";
 import Loader from "../../ui/Loader";
 
@@ -9,8 +8,6 @@ function MovieDiscoverSection({ discoverMovie, discoverMovieLoading }) {
     movieGenre,
     movieYear,
     movieVote,
-    dispatch,
-    discoverPage,
   } = useMovie();
   return (
     <div className="flex flex-col">

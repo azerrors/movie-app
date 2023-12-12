@@ -1,21 +1,15 @@
 import React from "react";
 import UpcomingCarousel from "./Carousel";
 import ListElement from "./ListElement";
-import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+import { useMovie } from "../contexts/movieContext";
 function List({ type, movie, serie }) {
+  const { filterInput } = useMovie();
   //==================================================================
   //==================================================================
-  const settings = {
-    dots: true,
-    infinite: true,
-    slidesToShow: 5,
-    slidesToScroll: 1,
-  };
+
   if (type === "movie/upcoming") {
     return (
-      <ul className="mt-6 flex flex-wrap  gap-3 ">
+      <ul className="mt-6 flex flex-wrap justify-center  gap-3 ">
         {movie?.slice(0, 7)?.map((movie) => {
           return <UpcomingCarousel key={movie.id} movie={movie} type={type} />;
         })}
@@ -222,6 +216,34 @@ function List({ type, movie, serie }) {
   if (type === "people/moviecredits") {
     return (
       <ul className="mt-6 flex flex-wrap justify-center gap-4 ">
+        {movie?.map((movie) => {
+          return <ListElement movie={movie} key={movie.id} type={type} />;
+        })}
+      </ul>
+    );
+  }
+  if (type === "favorites") {
+    return (
+      <ul className="mt-6 flex flex-wrap justify-center gap-4 ">
+        {movie
+          ?.filter((item) =>
+            filterInput === "movie"
+              ? item.title
+              : filterInput === "serie"
+              ? item.name
+              : filterInput === "all"
+              ? item
+              : item,
+          )
+          ?.map((movie) => {
+            return <ListElement movie={movie} key={movie.id} type={type} />;
+          })}
+      </ul>
+    );
+  }
+  if (type === "favorites/note") {
+    return (
+      <ul className="mt-6 flex flex-wrap justify-center  ">
         {movie?.map((movie) => {
           return <ListElement movie={movie} key={movie.id} type={type} />;
         })}
