@@ -753,7 +753,7 @@ function ListElement({ type, movie, serie }) {
     };
     return (
       <div className="group group mt-5 w-32   rounded-lg transition-all duration-300   md:h-96 md:w-56">
-        <Link to={`/${id}?movieId=${id}`}>
+        <Link to={`/${id}?serieId=${id}`}>
           {poster_path ? (
             <img
               src={`${BASE_IMAGE}${poster_path}`}
@@ -832,7 +832,7 @@ function ListElement({ type, movie, serie }) {
     };
     return (
       <div className="group group mt-5 w-32   rounded-lg transition-all duration-300   md:h-96 md:w-56">
-        <Link to={`/${id}?movieId=${id}`}>
+        <Link to={`/${id}?serieId=${id}`}>
           {poster_path ? (
             <img
               src={`${BASE_IMAGE}${poster_path}`}
@@ -911,7 +911,7 @@ function ListElement({ type, movie, serie }) {
     };
     return (
       <div className="group group mt-5 w-32   rounded-lg transition-all duration-300   md:h-96 md:w-48">
-        <Link to={`/${id}?movieId=${id}`}>
+        <Link to={`/${id}?serieId=${id}`}>
           {poster_path ? (
             <img
               src={`${BASE_IMAGE}${poster_path}`}
@@ -990,7 +990,7 @@ function ListElement({ type, movie, serie }) {
     };
     return (
       <div className="group group mt-5 w-32   rounded-lg transition-all duration-300   md:h-96 md:w-48">
-        <Link to={`/${id}?movieId=${id}`}>
+        <Link to={`/${id}?serieId=${id}`}>
           {poster_path ? (
             <img
               src={`${BASE_IMAGE}${poster_path}`}
@@ -1069,7 +1069,7 @@ function ListElement({ type, movie, serie }) {
     };
     return (
       <div className="group group mt-5 w-32   rounded-lg transition-all duration-300   md:h-96 md:w-48">
-        <Link to={`/${id}?movieId=${id}`}>
+        <Link to={`/${id}?serieId=${id}`}>
           {poster_path ? (
             <img
               src={`${BASE_IMAGE}${poster_path}`}
@@ -1147,7 +1147,7 @@ function ListElement({ type, movie, serie }) {
     };
     return (
       <div className="group group mt-5 w-32   rounded-lg transition-all duration-300   md:h-96 md:w-48">
-        <Link to={`/${id}?movieId=${id}`}>
+        <Link to={`/${id}?serieId=${id}`}>
           {poster_path ? (
             <img
               src={`${BASE_IMAGE}${poster_path}`}
@@ -1226,7 +1226,7 @@ function ListElement({ type, movie, serie }) {
     };
     return (
       <div className="group group mt-5 w-32   rounded-lg transition-all duration-300   md:h-96 md:w-48">
-        <Link to={`/${id}?movieId=${id}`}>
+        <Link to={`/${id}?serieId=${id}`}>
           {poster_path ? (
             <img
               src={`${BASE_IMAGE}${poster_path}`}
@@ -1305,7 +1305,7 @@ function ListElement({ type, movie, serie }) {
     };
     return (
       <div className="group group mt-5 w-32   rounded-lg transition-all duration-300   md:h-96 md:w-48">
-        <Link to={`/${id}?movieId=${id}`}>
+        <Link to={`/${id}?serieId=${id}`}>
           {poster_path ? (
             <img
               src={`${BASE_IMAGE}${poster_path}`}
