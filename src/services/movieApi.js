@@ -61,13 +61,14 @@ export async function getDiscoveredMovies(page) {
   const { results } = await res.json();
   return results;
 }
-export async function getMoviesByGenre(genre, page) {
+export async function getMoviesByGenre(genre, page = 1) {
   const res = await fetch(
     `${BASE_URL}discover/movie?api_key=${KEY}&with_genres=${genre}&page=${page}`,
   );
-  const { results } = await res.json();
+  const {results} = await res.json();
   return results;
 }
+
 export async function getMoviesByYear(year) {
   const res = await fetch(
     `${BASE_URL}discover/movie?api_key=${KEY}&primary_release_date.gte=${year}-01-01&primary_release_date.lte=${year}-12-31`,

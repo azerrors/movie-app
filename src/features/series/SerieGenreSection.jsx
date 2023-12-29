@@ -15,14 +15,14 @@ function SerieGenreSection({ serieWithGenre, serieGenreLoading }) {
             Current Page: {genrePage}
           </h3>
         )} */}
-        {serieGenre && <List type="serie/genre" serie={serieWithGenre} />}
+        {serieGenre && <List type="list2" data={serieWithGenre} />}
         {serieGenreLoading && (
           <div className="mt-10 flex h-screen items-center justify-center">
             <Loader />
           </div>
         )}
       </div>
-      {serieGenre && !serieInput && !serieYear && !serieVote && (
+      {/* {serieGenre && !serieInput && !serieYear && !serieVote && (
         <div className="m-5 flex justify-end gap-2">
           {genrePage !== 1 && (
             <Button
@@ -39,7 +39,7 @@ function SerieGenreSection({ serieWithGenre, serieGenreLoading }) {
             Next
           </Button>
         </div>
-      )}
+      )} */}
     </div>
   );
 }

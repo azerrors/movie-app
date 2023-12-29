@@ -1,6 +1,5 @@
-import React, { useState } from "react";
-import Header from "../../ui/Header";
 import { useQuery } from "@tanstack/react-query";
+import React, { useState } from "react";
 import { getPopularMoviesWithPages } from "../../services/movieApi";
 import Button from "../../ui/Button";
 import List from "../../ui/List";
@@ -33,7 +32,6 @@ function PopulerMovies() {
   }
   return (
     <div className="h-full text-white">
-      <Header />
       <div className="flex justify-between border-b  border-stone-300 ">
         <h3 className="mt-5 p-3 uppercase tracking-widest text-white shadow-sm md:text-2xl">
           Populer Movies

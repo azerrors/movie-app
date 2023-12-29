@@ -3,8 +3,12 @@ import { createContext, useContext, useReducer } from "react";
 const MovieContext = createContext();
 const initialState = {
   favorites: [],
+  input: "",
   filterInput: "all",
   showNote: false,
+  openSidebar: false,
+  openCategory: false,
+
   movieGenreName: "",
   movieGenre: "",
   movieYear: "",
@@ -30,16 +34,25 @@ function reducer(state, action) {
         ...state,
         movieGenre: action.payload.genre,
         movieGenreName: action.payload.genreName,
+
+        movieYear: "",
+        movieVote: "",
       };
     case "movie/get/year":
       return {
         ...state,
         movieYear: action.payload,
+        movieVote: "",
+        movieGenre: "",
+        movieGenreName: "",
       };
     case "movie/get/vote":
       return {
         ...state,
         movieVote: action.payload,
+        movieGenre: "",
+        movieYear: "",
+        movieGenreName: "",
       };
     // =================================================================================================//
     case "movie/increase/page/discover":
@@ -85,38 +98,7 @@ function reducer(state, action) {
         discoverPage: state.discoverPage - 1,
       };
     // =================================================================================================//
-    case "movie/show/year":
-      return {
-        ...state,
-        movieIsYear: true,
-        movieIsGenre: false,
-        movieIsVote: false,
 
-        movieVote: "",
-        movieGenre: "",
-        movieGenreName: "",
-      };
-    case "movie/show/genre":
-      return {
-        ...state,
-        movieIsGenre: true,
-        movieIsYear: false,
-        movieIsVote: false,
-
-        movieYear: "",
-        movieVote: "",
-      };
-    case "movie/show/vote":
-      return {
-        ...state,
-        movieIsGenre: false,
-        movieIsYear: false,
-        movieIsVote: true,
-
-        movieGenre: "",
-        movieYear: "",
-        movieGenreName: "",
-      };
     case "movie/reset/genre":
       return {
         ...state,
@@ -155,6 +137,26 @@ function reducer(state, action) {
         ...state,
         showNote: !state.showNote,
       };
+    case "add/mainInput":
+      return {
+        ...state,
+        input: action.payload,
+      };
+    case "remove/mainInput":
+      return {
+        ...state,
+        input: "",
+      };
+    case "openSidebar":
+      return {
+        ...state,
+        openSidebar: true,
+      };
+    case "closeSidebar":
+      return {
+        ...state,
+        openSidebar: false,
+      };
     default:
       return {
         ...state,
@@ -172,18 +174,19 @@ function MovieProvider({ children }) {
       movieIsGenre,
       movieIsVote,
       movieIsYear,
+      input,
       discoverPage,
       genrePage,
       yearPage,
       filterInput,
       showNote,
       favorites,
+      openSidebar,
       votePage,
     },
     dispatch,
   ] = useReducer(reducer, initialState);
 
-  console.log(favorites);
   return (
     <MovieContext.Provider
       value={{
@@ -197,12 +200,14 @@ function MovieProvider({ children }) {
         movieIsVote,
         movieIsYear,
         discoverPage,
+        openSidebar,
         genrePage,
         yearPage,
         filterInput,
         votePage,
         favorites,
         showNote,
+        input,
       }}
     >
       {children}

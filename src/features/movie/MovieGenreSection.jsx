@@ -14,7 +14,7 @@ function MovieGenreSection({ movieWithGenre, genreLoading }) {
             Current Page: {genrePage}
           </h3>
         )} */}
-        {movieGenre && <List type="movie/genre" movie={movieWithGenre} />}
+        {movieGenre && <List type="list2" data={movieWithGenre} />}
         {genreLoading && (
           <div className="mt-10 flex h-screen items-center justify-center">
             <Loader />

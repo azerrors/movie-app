@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 function MovieCast({ cast }) {
   const BASE_IMAGE = "https://image.tmdb.org/t/p/w500";
   const { profile_path: image, id } = cast;
-  console.log(id);
 
   return (
     <li>

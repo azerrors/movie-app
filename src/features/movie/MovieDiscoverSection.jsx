@@ -13,7 +13,7 @@ function MovieDiscoverSection({ discoverMovie, discoverMovieLoading }) {
     <div className="flex flex-col">
       <div>
         {!movieInput && !movieGenre && !movieYear && !movieVote && (
-          <List type="movie/discover" movie={discoverMovie} />
+          <List type="list2" data={discoverMovie} />
         )}
         {discoverMovieLoading && (
           <div className="mt-10 flex h-screen items-center justify-center">

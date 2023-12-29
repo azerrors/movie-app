@@ -1,43 +1,35 @@
-import { BsCalendar2Week, BsFilm, BsStar } from "react-icons/bs";
 import { useMovie } from "../../contexts/movieContext";
-import Year from "./Year";
-import Vote from "./Vote";
+import { BsSearch } from "react-icons/bs";
+
 import Genre from "./Genre";
+import Vote from "./Vote";
+import Year from "./Year";
 
 function MovieSidebar() {
-  const { dispatch, movieIsGenre, movieIsVote, movieIsYear } = useMovie();
-
-  const handleYear = () => {
-    dispatch({ type: "movie/show/year" });
-  };
-
-  const handleCategory = () => {
-    dispatch({ type: "movie/show/genre" });
-  };
-  const handleVote = () => {
-    dispatch({ type: "movie/show/vote" });
-  };
+  const { dispatch, movieInput } = useMovie();
 
   return (
-    <div className="flex flex-col border">
-      <div className="flex justify-center gap-5 p-10">
-        <BsFilm
-          className={`ml-3 cursor-pointer text-2xl  text-white`}
-          onClick={handleCategory}
-        />
-        <BsCalendar2Week
-          className="ml-3 cursor-pointer text-2xl text-white"
-          onClick={handleYear}
-        />
-        <BsStar
-          className="ml-3 cursor-pointer text-2xl text-white"
-          onClick={handleVote}
-        />
+    <div className="flex flex-col ">
+      <div className="mt-3">
+        <span className="text-md mb-1 uppercase text-sky-200/50 flex items-center gap-2 border-b border-sky-200/20 pb-2">
+          <BsSearch />
+          Search
+        </span>
+        <div className="mb-10">
+          <input
+            className="focus:ring-border-primary w-full rounded-md p-1 transition-all duration-200  focus:outline-none  focus:ring"
+            type="text"
+            value={movieInput}
+            placeholder="search for a movie"
+            onChange={(e) =>
+              dispatch({ type: "movie/getInputValue", payload: e.target.value })
+            }
+          />
+        </div>
       </div>
-      {movieIsGenre && !movieIsVote && !movieIsYear && <Genre />}
-
-      {!movieIsGenre && !movieIsVote && movieIsYear && <Year />}
-      {!movieIsGenre && movieIsVote && !movieIsYear && <Vote />}
+      <Genre />
+      <Vote />
+      <Year />
     </div>
   );
 }

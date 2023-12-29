@@ -1,43 +1,35 @@
+import { BsSearch } from "react-icons/bs";
 import { useSerie } from "../../contexts/SerieContext";
-import { BsCalendar2Week, BsFilm, BsStar } from "react-icons/bs";
 
 import SerieGenre from "./SerieGenre";
-import SerieYear from "./SerieYear";
 import SerieVote from "./SerieVote";
+import SerieYear from "./SerieYear";
 
 function SerieSiderBar() {
-  const { dispatch, serieIsGenre, serieIsVote, serieIsYear } = useSerie();
+  const { dispatch, sereiInput } = useSerie();
 
-  const handleYear = () => {
-    dispatch({ type: "serie/show/year" });
-  };
-
-  const handleCategory = () => {
-    dispatch({ type: "serie/show/genre" });
-  };
-  const handleVote = () => {
-    dispatch({ type: "serie/show/vote" });
-  };
   return (
-    <div className="flex flex-col border">
-      <div className="flex justify-center gap-5 p-10">
-        <BsFilm
-          className={`ml-3 cursor-pointer text-2xl  text-white`}
-          onClick={handleCategory}
-        />
-        <BsCalendar2Week
-          className="ml-3 cursor-pointer text-2xl text-white"
-          onClick={handleYear}
-        />
-        <BsStar
-          className="ml-3 cursor-pointer text-2xl text-white"
-          onClick={handleVote}
-        />
+    <div className="flex flex-col ">
+      <div className="mt-3">
+        <span className="text-md mb-1 flex items-center gap-2 border-b border-sky-200/20 pb-2 uppercase text-sky-200/50">
+          <BsSearch />
+          Search
+        </span>
+        <div className="mb-10">
+          <input
+            className="focus:ring-border-primary w-full rounded-md p-1 transition-all duration-200  focus:outline-none  focus:ring"
+            type="text"
+            value={sereiInput}
+            placeholder="search for a movie"
+            onChange={(e) =>
+              dispatch({ type: "serie/getInputValue", payload: e.target.value })
+            }
+          />
+        </div>
       </div>
-      {serieIsGenre && !serieIsVote && !serieIsYear && <SerieGenre />}
-
-      {!serieIsGenre && !serieIsVote && serieIsYear && <SerieYear />}
-      {!serieIsGenre && serieIsVote && !serieIsYear && <SerieVote />}
+      <SerieGenre />
+      <SerieVote />
+      <SerieYear />
     </div>
   );
 }

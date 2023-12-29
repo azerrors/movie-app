@@ -19,31 +19,33 @@ function SerieGenre() {
   return (
     <div>
       <div className="flex items-center gap-1 border-b border-stone-300 ">
-        <BsFilm className="ml-3 text-xl text-white" />
-        <h3 className=" p-2 text-xl uppercase tracking-widest text-white">
+        <span className="text-md mb-1 flex items-center gap-2  pb-2 uppercase text-sky-200/50">
+          <BsFilm />
           Genres
-        </h3>
+        </span>
       </div>
-      <div className=" flex flex-wrap justify-center gap-2 ">
-        {serieGenre?.map((genre) => {
-          return (
-            <Button
-              onClick={() =>
-                dispatch({
-                  type: "serie/get/genre",
-                  payload: { genre: genre.id, genreName: genre.name },
-                })
-              }
-              type="category"
-              key={genre.id}
-            >
-              {genre.name}
-            </Button>
-          );
-        })}
+      <div className=" mt-2 flex flex-col ">
+        <div className=" grid grid-cols-2 gap-2 ">
+          {serieGenre?.map((genre) => {
+            return (
+              <Button
+                onClick={() =>
+                  dispatch({
+                    type: "serie/get/genre",
+                    payload: { genre: genre.id, genreName: genre.name },
+                  })
+                }
+                type="primary_category"
+                key={genre.id}
+              >
+                {genre.name}
+              </Button>
+            );
+          })}
+        </div>
       </div>
-      <div className="mr-5 mb-10 flex justify-end">
-        <Button type="smreset" onClick={handleClick}>
+      <div className="flex justify-end">
+        <Button type="secondary_smreset" onClick={handleClick}>
           Reset
         </Button>
       </div>

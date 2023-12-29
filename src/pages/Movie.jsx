@@ -7,7 +7,6 @@ import {
   getMoviesByYear,
   getSearchedMovies,
 } from "../services/movieApi";
-import Header from "../ui/Header";
 
 import { useMovie } from "../contexts/movieContext";
 import MovieDiscoverSection from "../features/movie/MovieDiscoverSection";
@@ -16,8 +15,8 @@ import MovieInputSection from "../features/movie/MovieInputSection";
 import MovieSidebar from "../features/movie/MovieSiderbar";
 import MovieVoteSection from "../features/movie/MovieVoteSection";
 import MovieYearSection from "../features/movie/MovieYearSection";
-import Search from "../features/movie/Search";
-import NotFound from "../ui/NotFound";
+import UpContent from "../features/movie/UpContent";
+import HeaderV2 from "../ui/HeaderV2";
 
 function Movie() {
   const {
@@ -56,34 +55,35 @@ function Movie() {
 
   return (
     <div>
-      <Header />
-      <div className="flex h-full flex-col-reverse gap-5 p-3  md:mx-12 md:flex-row">
-        <div className="md:w-9/12 border border-stone-300">
-          <Search />
-          <MovieDiscoverSection
-            discoverMovie={discoverMovie}
-            discoverMovieLoading={discoverMovieLoading}
-          />
-          <MovieInputSection
-            searchMovie={searchMovie}
-            searchedMovieLoading={searchedMovieLoading}
-          />
+      <div>
+        <UpContent />
+        <div className="flex h-full flex-col-reverse gap-5 bg-secondary p-3 shadow-lg  md:flex-row">
+          <div className=" md:w-9/12">
+            <MovieDiscoverSection
+              discoverMovie={discoverMovie}
+              discoverMovieLoading={discoverMovieLoading}
+            />
+            <MovieInputSection
+              searchMovie={searchMovie}
+              searchedMovieLoading={searchedMovieLoading}
+            />
 
-          <MovieGenreSection
-            movieWithGenre={movieWithGenre}
-            genreLoading={genreLoading}
-          />
-          <MovieYearSection
-            movieWithYear={movieWithYear}
-            yearLoading={yearLoading}
-          />
-          <MovieVoteSection
-            movieWithVoteAverage={movieWithVoteAverage}
-            voteAverageLoading={voteAverageLoading}
-          />
-        </div>
-        <div className="md:w-3/12">
-          <MovieSidebar />
+            <MovieGenreSection
+              movieWithGenre={movieWithGenre}
+              genreLoading={genreLoading}
+            />
+            <MovieYearSection
+              movieWithYear={movieWithYear}
+              yearLoading={yearLoading}
+            />
+            <MovieVoteSection
+              movieWithVoteAverage={movieWithVoteAverage}
+              voteAverageLoading={voteAverageLoading}
+            />
+          </div>
+          <div className="md:w-3/12">
+            <MovieSidebar />
+          </div>
         </div>
       </div>
     </div>

@@ -3,7 +3,6 @@ import React, { useState } from "react";
 import { getTrendingMoviesWithPages } from "../../services/movieApi";
 import Button from "../../ui/Button";
 import List from "../../ui/List";
-import Header from "../../ui/Header";
 import Loader from "../../ui/Loader";
 
 function TrendingMovies() {
@@ -34,7 +33,6 @@ function TrendingMovies() {
     }
   return (
     <div className="h-full text-white">
-      <Header />
       <div className="flex justify-between border-b  border-stone-300 ">
         <h3 className="mt-5 p-3 uppercase tracking-widest text-white shadow-sm md:text-2xl">
           Trending Movies

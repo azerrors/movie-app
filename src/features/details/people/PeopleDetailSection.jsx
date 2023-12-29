@@ -4,7 +4,6 @@ import {
   getPeopleDetail,
   getPeopleMovieCredits,
 } from "../../../services/peopleApi";
-import Header from "../../../ui/Header";
 import Button from "../../../ui/Button";
 import { useNavigate } from "react-router-dom";
 import Popout from "./PeopleBiography";
@@ -66,7 +65,6 @@ function PeopleDetailSection({ peopleId }) {
 
   return (
     <div>
-      <Header />
       <div className=" border-b">
         <div>
           <h2 className="ml-5 text-left text-xl font-semibold uppercase tracking-widest text-white md:my-10 md:ml-64 md:text-3xl">

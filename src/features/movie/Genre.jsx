@@ -6,7 +6,7 @@ import Button from "../../ui/Button";
 import { useMovie } from "../../contexts/movieContext";
 
 function Genre() {
-  const { dispatch } = useMovie();
+  const { dispatch, movieIsGenre, movieIsVote, movieIsYear } = useMovie();
 
   const { data: movieGenres } = useQuery({
     queryKey: ["searchmovie"],
@@ -16,36 +16,43 @@ function Genre() {
   const handleClick = () => {
     dispatch({ type: "movie/reset/genre" });
   };
+
+  const handleCategory = () => {
+    dispatch({ type: "movie/show/genre" });
+  };
+
   return (
     <div>
       <div className="flex items-center gap-1 border-b border-stone-300 ">
-        <BsFilm className="ml-3 text-xl text-white" />
-        <h3 className=" p-2 text-xl uppercase tracking-widest text-white">
+        <span className="text-md mb-1 flex items-center gap-2  pb-2 uppercase text-sky-200/50">
+          <BsFilm />
           Genres
-        </h3>
+        </span>
       </div>
-      <div className=" flex flex-wrap justify-center gap-2 ">
-        {movieGenres?.map((genre) => {
-          return (
-            <Button
-              onClick={() =>
-                dispatch({
-                  type: "movie/get/genre",
-                  payload: { genre: genre.id, genreName: genre.name },
-                })
-              }
-              type="category"
-              key={genre.id}
-            >
-              {genre.name}
-            </Button>
-          );
-        })}
-      </div>
-      <div className="mr-10 mb-10 flex justify-end">
-        <Button type="smreset" onClick={handleClick}>
-          Reset
-        </Button>
+      <div className="mt-2 flex flex-col">
+        <div className=" grid grid-cols-2 gap-2 ">
+          {movieGenres?.map((genre) => {
+            return (
+              <Button
+                onClick={() =>
+                  dispatch({
+                    type: "movie/get/genre",
+                    payload: { genre: genre.id, genreName: genre.name },
+                  })
+                }
+                type="primary_category"
+                key={genre.id}
+              >
+                {genre.name}
+              </Button>
+            );
+          })}
+        </div>
+        <div className=" flex justify-end">
+          <Button type="secondary_smreset" onClick={handleClick}>
+            Reset
+          </Button>
+        </div>
       </div>
     </div>
   );

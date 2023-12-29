@@ -7,7 +7,7 @@ function SerieYearSection({ serieWithYear, serieYearLoading }) {
   const { serieYear } = useSerie();
   return (
     <div>
-      {serieYear && <List type="serie/year" serie={serieWithYear} />}
+      {serieYear && <List type="list2" data={serieWithYear} />}
       {serieYearLoading && (
         <div className="mt-10 flex h-screen items-center justify-center">
           <Loader />

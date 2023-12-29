@@ -16,16 +16,16 @@ function SerieVote() {
   return (
     <div>
       <div className="flex items-center gap-1 border-b border-stone-300 ">
-        <BsStar className="ml-3 text-xl text-white" />
-        <h3 className=" p-2 text-xl uppercase tracking-widest text-white">
+        <span className="text-md mb-1 flex items-center gap-2  pb-2 uppercase text-sky-200/50">
+          <BsStar />
           Vote
-        </h3>
+        </span>
       </div>
-      <div className="grid grid-cols-2  place-items-center ">
+      <div className="mt-2 flex flex-wrap justify-center gap-3 ">
         {yearsArray.map((year) => {
           return (
             <Button
-              type="category"
+              type="primary_category"
               onClick={() =>
                 dispatch({ type: "serie/get/vote", payload: year })
               }
@@ -36,8 +36,8 @@ function SerieVote() {
           );
         })}
       </div>
-      <div className="mr-3 mb-10  flex justify-end">
-        <Button type="smreset" onClick={handleClick}>
+      <div className="mb-10 mr-3  flex justify-end">
+        <Button type="secondary_smreset" onClick={handleClick}>
           Reset
         </Button>
       </div>

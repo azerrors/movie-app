@@ -2,7 +2,6 @@ import { useQuery } from "@tanstack/react-query";
 import React, { useState } from "react";
 import { getPopulerTvWithPage } from "../../services/tvSeries";
 import Button from "../../ui/Button";
-import Header from "../../ui/Header";
 import List from "../../ui/List";
 import Loader from "../../ui/Loader";
 
@@ -33,7 +32,6 @@ function PopulerSeries() {
 
   return (
     <div className="h-full text-white">
-      <Header />
       <div className="flex justify-between border-b  border-stone-300 ">
         <h3 className="mt-5 p-3 uppercase tracking-widest text-white shadow-sm md:text-2xl">
           Populer Series

@@ -6,25 +6,28 @@ import {
   getMovieSimilar,
   getMovieVideo,
 } from "../../../services/movieApi";
-import { useState } from "react";
-import Header from "../../../ui/Header";
-import MovieGenre from "./MovieGenre";
-import MovieCast from "./MovieCast";
-import Button from "../../../ui/Button";
-import MovieVideoImage from "./MovieVideoImage";
-import MovieImage from "./MovieImage";
-import { GoPerson } from "react-icons/go";
-import MovieSimilar from "./MovieSimilar";
-import { useNavigate } from "react-router-dom";
-import NotFound from "../../../ui/NotFound";
 import Loader from "../../../ui/Loader";
+import NotFound from "../../../ui/NotFound";
+import MovieCast from "./MovieCast";
+import MovieGenre from "./MovieGenre";
+import MovieImage from "./MovieImage";
+import MovieSimilar from "./MovieSimilar";
+import MovieVideoImage from "./MovieVideoImage";
 
+import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
+import { getBelongToCollection } from "../../../services/OtherApi";
+import List from "../../../ui/List";
+import MySlider from "../../../ui/MySlider";
+import MovieCategory from "./MovieCategory";
+import MovieCompanies from "./MovieCompanies";
+import MovieCountries from "./MovieCountries";
+import MovieSpokenLanguages from "./MovieSpokenLanguages,";
+import { CiCalendarDate, CiTimer } from "react-icons/ci";
+import { GiBeveledStar } from "react-icons/gi";
 const BASE_IMAGE = "https://image.tmdb.org/t/p/w500";
 
 function MovieDetailSection({ movieID }) {
-  const [image, setImage] = useState(false);
-  const [video, setVideo] = useState(false);
-
   const { data: movieDetails, isLoading: movieDetailsLoading } = useQuery({
     queryKey: ["movieid", movieID],
     queryFn: () => getMovieDetails(movieID),
@@ -48,33 +51,34 @@ function MovieDetailSection({ movieID }) {
     queryKey: ["movieSimilar", movieID],
     queryFn: () => getMovieSimilar(movieID),
   });
-  const h4Style =
-    "absolute p-1 top-20 text-md text-center w-screen md:rounded-md md:bg-gray-900/40 p-2 animate-moveInLeft md:text-2xl uppercase font-semibold tracking-widest text-white md:top-32";
-  const pStyle =
-    "text-stone-100  absolute md:top-64 top-[68.5%] text-md md:w-[40rem] bg-gray-900/50 p-3 rounded-lg text-center p-3 md:right-80 md:text-sm  ";
-  const imgStyle =
-    "absolute animate-moveInRight w-48 right-[5rem] top-36 md:h-[27rem] md:left-96 md:top-48 md:w-72 rounded-lg ";
 
   const {
     backdrop_path,
     original_language,
     poster_path,
+    belongs_to_collection,
     genres,
     release_date,
     title,
     vote_average,
     overview,
+    original_title,
+    production_companies,
+    production_countries,
+    spoken_languages,
+    runtime,
   } = movieDetails ? movieDetails : [];
-  const navigate = useNavigate();
 
-  const handleImage = () => {
-    setImage((a) => !a);
-    setVideo(false);
-  };
-  const handleVideo = () => {
-    setVideo((a) => !a);
-    setImage(false);
-  };
+  const { data: collection } = useQuery({
+    queryKey: ["belongto", belongs_to_collection?.id],
+    queryFn: () => getBelongToCollection(belongs_to_collection?.id),
+  });
+
+  const { name: collectinName, parts: collectionParts } = collection
+    ? collection
+    : {};
+
+  console.log(belongs_to_collection);
 
   if (movieDetailsLoading) {
     return (
@@ -88,125 +92,233 @@ function MovieDetailSection({ movieID }) {
 
   return (
     <div>
-      <div className=" h-screen overflow-hidden md:w-full">
-        <div className="relative">
-          <img
-            src={`${BASE_IMAGE}${backdrop_path}`}
-            className=" h-screen   blur transition-all duration-200 md:h-full md:w-full"
-            alt=""
-          />
-          <div className="absolute top-0  w-full bg-slate-900/10 md:right-1">
-            <Header />
-          </div>
-          {poster_path ? (
-            <img
-              className={imgStyle}
-              src={`${BASE_IMAGE}${poster_path}`}
-              alt=""
-            />
-          ) : (
-            <img className={imgStyle} src="/public/imagenotfound.jpg" alt="" />
-          )}
-          <span className="absolute right-[5rem] top-36  text-lg text-white md:left-96 md:top-48 md:text-xl">
-            {Math.floor(vote_average)}⭐
-          </span>
-          <span className="absolute right-[5rem] top-[25rem] rounded-md px-1 text-xl text-white md:left-[24rem] md:top-[37rem]">
-            {original_language}
-          </span>
-          <span className="text-md absolute right-[11rem]  top-36 rounded-md  text-white md:left-[35.3rem]  md:top-48 md:text-lg">
-            {release_date}
-          </span>
-
-          <div>
-            <h4 className={h4Style}>{movieDetails && title}</h4>
-            <div className="overflow-auto">
-              {overview && <p className={pStyle}>{overview}</p>}
-            </div>
-          </div>
-          <div className="absolute left-[4rem] top-28 hidden md:left-[43.5rem] md:top-48 md:block">
-            <ul className="mt-2 flex flex-wrap items-center justify-center gap-2">
-              {genres &&
-                genres.map((genre) => {
-                  return <MovieGenre key={genre.id} genre={genre} />;
-                })}
-            </ul>
+      <div>
+        <img
+          src={`${BASE_IMAGE}${backdrop_path}`}
+          className="bg-contain  blur-sm  transition-all duration-200 md:h-[29rem] md:w-full"
+          alt=""
+        />
+      </div>
+      <div className="-translate-y-16 animate-moveInBottom rounded-2xl   bg-secondary p-5  shadow-lg transition-all  duration-500">
+        <div className="flex   flex-col  gap-5   md:flex-row">
+          <div className="md:hidden">
+            <h6 className="text-sm uppercase tracking-widest text-stone-200 md:text-xl">
+              {title}({original_language})
+            </h6>
+            <h6 className="text-sm uppercase tracking-widest text-stone-200/50 md:text-xl">
+              Orginal title: {original_title}
+            </h6>
           </div>
 
-          {movieCast?.length !== 0 && (
+          <div className="md:w-[30%]">
             <div>
-              <div className="absolute hidden p-1 md:right-[27.8rem] md:top-[27.8rem]  md:block">
-                <h3 className=" border-stone-200 p-1 text-2xl uppercase  text-white">
-                  Cast
-                </h3>
-                <ul className="mt-2 flex flex-wrap items-center justify-center gap-2">
-                  {movieCast?.slice(0, 5)?.map((cast) => {
-                    return <MovieCast key={cast.id} cast={cast} />;
+              <div>
+                {poster_path ? (
+                  <img
+                    className="rounded-lg  md:h-[31rem] "
+                    src={`${BASE_IMAGE}${poster_path}`}
+                    alt=""
+                  />
+                ) : (
+                  <img
+                    className="h-[35rem] rounded-lg "
+                    src="/public/imagenotfound.jpg"
+                    alt=""
+                  />
+                )}
+              </div>
+              <div className="flex items-center justify-around   bg-sky-900/20 p-1 text-center text-stone-200/70">
+                <div>
+                  <h6 className=" flex justify-center pb-1 lowercase">
+                    <CiCalendarDate className="text-3xl" />
+                  </h6>
+                  <span className="text-center text-stone-200">
+                    {release_date}
+                  </span>
+                </div>
+
+                <div>
+                  <h6 className="flex justify-center pb-1 text-center text-3xl lowercase">
+                    <CiTimer />
+                  </h6>
+                  <span className="text-center text-stone-200">{runtime}m</span>
+                </div>
+
+                <div>
+                  <h6 className="flex justify-center pb-1 text-center text-3xl lowercase">
+                    <GiBeveledStar />
+                  </h6>
+                  <span className="text-center text-stone-200">
+                    {vote_average.toFixed(1)}
+                  </span>
+                </div>
+              </div>
+            </div>
+            <div className="mt-5 flex flex-col gap-2 divide-y-[1px] divide-sky-200/50 text-stone-200/70">
+              <div>
+                <h4 className="mt-2 text-lg tracking-widest text-sky-200/50">
+                  GENRES
+                </h4>
+                <ul className="mt-2 flex flex-wrap gap-2">
+                  {genres &&
+                    genres.map((genre) => {
+                      return <MovieGenre key={genre.id} genre={genre} />;
+                    })}
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="mt-2 text-lg uppercase tracking-widest text-sky-200/50">
+                  production companies
+                </h4>
+                <ul className="mt-2 flex flex-wrap gap-2 text-stone-200">
+                  {production_companies?.map((company) => {
+                    return (
+                      <MovieCompanies key={company.name} company={company} />
+                    );
+                  })}
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="mt-2 text-lg uppercase tracking-widest text-sky-200/50">
+                  production countries
+                </h4>
+                <ul className="mt-2 flex flex-wrap gap-2 text-stone-200">
+                  {production_countries?.map((country) => {
+                    return (
+                      <MovieCountries key={country.name} country={country} />
+                    );
+                  })}
+                </ul>
+              </div>
+
+              <div>
+                <h4 className="mt-2 text-lg uppercase tracking-widest text-sky-200/50">
+                  Spoken Languages
+                </h4>
+                <ul className="mt-2 flex flex-wrap gap-2">
+                  {spoken_languages?.map((language) => {
+                    return (
+                      <MovieSpokenLanguages
+                        key={language.iso_639_1}
+                        language={language}
+                      />
+                    );
                   })}
                 </ul>
               </div>
             </div>
-          )}
-        </div>
-      </div>
+          </div>
 
-      <div>
-        <div className="mb-10 flex justify-center gap-5  md:mr-10">
-          <Button type="normal" onClick={handleImage}>
-            Image
-          </Button>
-          <Button type="normal" onClick={() => navigate(-1)}>
-            BACK
-          </Button>
-          <Button type="normal" onClick={handleVideo}>
-            Video
-          </Button>
-        </div>
+          <div className="md:w-[70%]">
+            <div className="hidden md:inline-block">
+              <h6 className="text-xl uppercase tracking-widest text-stone-200">
+                {title}({original_language})
+              </h6>
+              <h6 className="text-xl uppercase tracking-widest text-stone-200/50">
+                Orginal title: {original_title}
+              </h6>
+            </div>
 
+            <div>
+              <h4 className="mt-10 text-lg font-medium uppercase tracking-wider text-sky-200/50 md:text-xl">
+                Overview
+              </h4>
+              <span className="md:text-md text-sm lowercase text-stone-200/70">
+                {overview}
+              </span>
+            </div>
+
+            {movieCast?.length && (
+              <div>
+                <h4 className="mt-10 text-lg font-medium uppercase tracking-wider text-sky-200/50 md:text-xl">
+                  Cast
+                </h4>
+                <ul className="mt-2 p-5">
+                  <MySlider
+                    slidesToShow={7}
+                    slidesToScroll={4}
+                    slidesToShow400={3}
+                    slidesToScroll400={3}
+                  >
+                    {movieCast?.map((cast) => {
+                      return <MovieCast key={cast.id} cast={cast} />;
+                    })}
+                  </MySlider>
+                </ul>
+              </div>
+            )}
+
+            {movieImage?.length && (
+              <div>
+                <h4 className="mt-10 text-lg font-medium  uppercase tracking-wider text-sky-200/50 md:text-xl">
+                  Images
+                </h4>
+                <ul className="mt-2">
+                  <MySlider
+                    slidesToShow={1}
+                    slidesToScroll={1}
+                    slidesToShow400={1}
+                    autoplay={true}
+                    autoplaySpeed={3000}
+                    pauseOnHover={true}
+                    arrows={false}
+                    slidesToScroll400={1}
+                  >
+                    {movieImage?.map((image) => {
+                      return <MovieImage key={image.id} image={image} />;
+                    })}
+                  </MySlider>
+                </ul>
+              </div>
+            )}
+          </div>
+        </div>
         <div>
-          {video && (
-            <ul className="flex flex-col items-center justify-center gap-5 p-1">
-              {movieVideo?.length > 0 ? (
-                movieVideo.slice(0, 3).map((video) => {
-                  return <MovieVideoImage key={video.id} video={video} />;
-                })
-              ) : (
-                <NotFound type="video" />
-              )}
-            </ul>
+          {movieVideo?.length && (
+            <div>
+              <h4 className="mt-10 text-lg font-medium uppercase tracking-wider text-sky-200/50 md:text-xl">
+                Tutorial
+              </h4>
+              <ul className="mt-2 flex flex-col items-center justify-center gap-5">
+                {movieVideo?.length > 0 ? (
+                  movieVideo.slice(0, 1).map((video) => {
+                    return <MovieVideoImage key={video.id} video={video} />;
+                  })
+                ) : (
+                  <NotFound type="video" />
+                )}
+              </ul>
+            </div>
           )}
-        </div>
-        <div>
-          {image && (
-            <ul className="flex flex-wrap items-center justify-center gap-5 p-1">
-              {movieImage?.length > 0 ? (
-                movieImage.map((image) => {
-                  return <MovieImage key={image.id} image={image} />;
-                })
-              ) : (
-                <NotFound type="img" />
-              )}
-            </ul>
-          )}
-        </div>
-      </div>
 
-      <div className="mb-5">
-        <div className="p-1">
-          {movieCast?.length > 0 && (
-            <h3 className="flex items-center gap-2 border-b border-stone-200 p-1 text-2xl uppercase  text-white">
-              <GoPerson />
-              Cast
-            </h3>
+          {belongs_to_collection && (
+            <div>
+              <h4 className="mt-10 text-lg font-medium uppercase tracking-wider text-sky-200/50 md:text-xl">
+                {collectinName}
+              </h4>
+              <ul className="mt-2 p-5 text-stone-200 ">
+                <List type="list5" data={collectionParts} />
+              </ul>
+            </div>
           )}
-          <ul className="mt-2 flex flex-wrap items-center justify-center gap-2 p-1 md:justify-start">
-            {movieCast?.map((cast) => {
-              return <MovieCast type="medium" key={cast.id} cast={cast} />;
-            })}
-          </ul>
+
+          {movieSimilar?.length && (
+            <div>
+              <h4 className="mt-10 text-lg font-medium uppercase tracking-wider text-sky-200/50 md:text-xl">
+                Similar Movies
+              </h4>
+              <ul className="mt-2 p-5">
+                <MovieSimilar movie={movieSimilar} />
+              </ul>
+            </div>
+          )}
+
+          {genres?.map((genre) => {
+            return <MovieCategory key={genre.id} genre={genre} />;
+          })}
         </div>
-      </div>
-      <div>
-        {movieSimilar?.length > 0 && <MovieSimilar movie={movieSimilar} />}
       </div>
     </div>
   );

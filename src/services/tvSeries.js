@@ -32,7 +32,6 @@ export async function getDiscoveredSeries(page) {
   return results;
 }
 
-
 export async function getSerieByGenre(genre, page) {
   const res = await fetch(
     `${BASE_URL}discover/tv?api_key=${KEY}&with_genres=${genre}&page=${page}`,
@@ -40,7 +39,6 @@ export async function getSerieByGenre(genre, page) {
   const { results } = await res.json();
   return results;
 }
-
 
 export async function getSerieByYear(year) {
   const res = await fetch(
@@ -50,7 +48,6 @@ export async function getSerieByYear(year) {
   return results;
 }
 
-
 export async function getSerieByVoteAverage(vote) {
   const res = await fetch(
     `${BASE_URL}discover/tv?api_key=${KEY}&vote_average.gte=${vote}&vote_average.lte=${vote}`,
@@ -58,7 +55,6 @@ export async function getSerieByVoteAverage(vote) {
   const { results } = await res.json();
   return results;
 }
-
 
 export async function getSearchedSerie(query) {
   const res = await fetch(`${BASE_URL}search/tv?api_key=${KEY}&query=${query}`);
@@ -85,7 +81,26 @@ export async function getSerieImage(id) {
 export async function getSerieSimilar(id) {
   const res = await fetch(`${BASE_URL}tv/${id}/similar?api_key=${KEY}`);
   const { results } = await res.json();
-  console.log(results);
   return results;
 }
 //====================================================================
+
+export async function getEpisodes(id, season) {
+  console.log(id);
+  const res = await fetch(
+    `${BASE_URL}tv/${id}/season/${season}?api_key=${KEY}`,
+  );
+  const data = await res.json();
+  return data;
+}
+
+export async function getAiringTodaySeries() {
+  const res = await fetch(`${BASE_URL}tv/airing_today?api_key=${KEY}`);
+  const {results} = await res.json();
+  return results;
+}
+export async function getOnTheAirSeries() {
+  const res = await fetch(`${BASE_URL}tv/on_the_air?api_key=${KEY}`);
+  const {results} = await res.json();
+  return results;
+}

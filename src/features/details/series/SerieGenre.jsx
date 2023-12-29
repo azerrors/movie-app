@@ -1,9 +1,7 @@
+
 function SerieGenre({ genre }) {
-  return (
-    <div className="rounded-lg border bg-gray-900 p-2 font-bold tracking-widest text-white">
-      {genre.name}
-    </div>
-  );
+  const { name } = genre;
+  return <div className="text-stone-200/70">{name},</div>;
 }
 
 export default SerieGenre;

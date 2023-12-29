@@ -22,7 +22,7 @@ function NavLink() {
         </li>
         <li>
           <Link to="/series" className={linkStyle}>
-            Series
+            TV Shows
           </Link>
         </li>
       </ul>

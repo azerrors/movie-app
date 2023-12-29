@@ -7,7 +7,7 @@ function MovieInputSection({ searchMovie, searchedMovieLoading }) {
   const { movieInput } = useMovie();
   return (
     <div>
-      {movieInput && <List type="movie/search" movie={searchMovie} />}
+      {movieInput && <List type="list2" data={searchMovie} />}
       {searchedMovieLoading && (
         <div className="mt-10 flex h-screen items-center justify-center">
           <Loader />

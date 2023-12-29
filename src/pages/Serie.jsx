@@ -1,5 +1,4 @@
 import React from "react";
-import Header from "../ui/Header";
 import SerieSearch from "../features/series/SerieSearch";
 import { useSerie } from "../contexts/SerieContext";
 import { useQuery } from "@tanstack/react-query";
@@ -16,6 +15,7 @@ import SerieSiderBar from "../features/series/SerieSiderBar";
 import SerieGenreSection from "../features/series/SerieGenreSection";
 import SerieYearSection from "../features/series/SerieYearSection";
 import SerieVoteSection from "../features/series/SerieVoteSection";
+import UpContent from "../features/movie/UpContent";
 
 function Serie() {
   const {
@@ -55,34 +55,35 @@ function Serie() {
 
   return (
     <div>
-      <Header />
-      <div className="flex  h-full flex-col-reverse gap-5 p-3  md:mx-12 md:flex-row">
-        <div className="border border-stone-300 md:w-9/12">
-          <SerieSearch />
-          <SerieDiscoverSection
-            discoverSerie={discoverSerie}
-            discoverSerieLoading={discoveSerieLoading}
-          />
-          <SerieInputSection
-            searchSerie={searchSerie}
-            searchedSerieLoading={searchedSerieLoading}
-          />
-          <SerieGenreSection
-            serieWithGenre={serieWithGenre}
-            serieGenreLoading={serieGenreLoading}
-          />
-          <SerieYearSection
-            serieWithYear={serieWithYear}
-            serieYearLoading={serieYearLoading}
-          />
-          <SerieVoteSection
-            serieWithVoteAverage={serieWithVoteAverage}
-            serieWithVoteAverageLoading={serieWithVoteAverageLoading}
-          />
+      <div>
+        <UpContent serie = {true}/>
+        <div className="flex h-full flex-col-reverse gap-5 bg-secondary p-3 shadow-lg  md:flex-row">
+          <div className=" md:w-9/12">
+            <SerieDiscoverSection
+              discoverSerie={discoverSerie}
+              discoverSerieLoading={discoveSerieLoading}
+            />
+            <SerieInputSection
+              searchSerie={searchSerie}
+              searchedSerieLoading={searchedSerieLoading}
+            />
+            <SerieGenreSection
+              serieWithGenre={serieWithGenre}
+              serieGenreLoading={serieGenreLoading}
+            />
+            <SerieYearSection
+              serieWithYear={serieWithYear}
+              serieYearLoading={serieYearLoading}
+            />
+            <SerieVoteSection
+              serieWithVoteAverage={serieWithVoteAverage}
+              serieWithVoteAverageLoading={serieWithVoteAverageLoading}
+            />
+          </div>
+          <p className="md:w-3/12">
+            <SerieSiderBar />
+          </p>
         </div>
-        <p className="md:w-3/12">
-          <SerieSiderBar />
-        </p>
       </div>
     </div>
   );
