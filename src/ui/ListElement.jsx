@@ -130,12 +130,12 @@ function ListElement({ type, movie, serie, data }) {
             <img
               src={`${BASE_IMAGE}${poster_path}`}
               alt=""
-              className="w-32 rounded-lg    transition-all duration-300 group-hover:-translate-y-2     md:h-12 md:w-12"
+              className="w-12 h-12 rounded-lg    transition-all duration-300 group-hover:-translate-y-2     md:h-12 md:w-12"
             />
           ) : (
             <img
               src="/public/imagenotfound.jpg"
-              className="w-32 rounded-lg    transition-all duration-300 group-hover:-translate-y-2     md:h-12 md:w-12"
+              className="w-12 h-12 rounded-lg    transition-all duration-300 group-hover:-translate-y-2     md:h-12 md:w-12"
               alt=""
             />
           )}

@@ -33,7 +33,7 @@ function List({ type, movie, serie, data }) {
           slidesToShow={4}
           slidesToScroll={3}
           slidesToShow400={5}
-          slidesToScroll400={5}
+          slidesToScroll400={3}
           autoplay={true}
           autoplaySpeed={3000}
           pauseOnHover={true}
