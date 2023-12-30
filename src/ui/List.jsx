@@ -18,7 +18,7 @@ function List({ type, movie, serie, data }) {
   }
   if (type === "list9") {
     return (
-      <ul className="grid md:grid-cols-4 grid-cols-1 place-items-center gap-2">
+      <ul className="grid md:grid-cols-4 grid-cols-1   place-items-center gap-2">
         {data?.map((movie) => {
           return <ListElement data={movie} key={movie.id} type={type} />;
         })}

@@ -1,11 +1,12 @@
 const BASE_URL = "https://api.themoviedb.org/3/";
 const KEY = "961f07487fe060051d66e8185e535b32";
 
-export async function getTrendingTv() {
-  const res = await fetch(`${BASE_URL}trending/tv/day?api_key=${KEY}`);
+export async function getTrendingTv(filter = "day" ) {
+  const res = await fetch(`${BASE_URL}trending/tv/${filter}?api_key=${KEY}`);
   const { results } = await res.json();
   return results;
 }
+
 export async function getTrendingTvWithPage(page) {
   const res = await fetch(
     `${BASE_URL}trending/tv/day?api_key=${KEY}&page=${page}`,
@@ -96,11 +97,11 @@ export async function getEpisodes(id, season) {
 
 export async function getAiringTodaySeries() {
   const res = await fetch(`${BASE_URL}tv/airing_today?api_key=${KEY}`);
-  const {results} = await res.json();
+  const { results } = await res.json();
   return results;
 }
 export async function getOnTheAirSeries() {
   const res = await fetch(`${BASE_URL}tv/on_the_air?api_key=${KEY}`);
-  const {results} = await res.json();
+  const { results } = await res.json();
   return results;
 }

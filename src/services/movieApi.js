@@ -13,8 +13,8 @@ export async function getRatedMoviesWithPages() {
   return results;
 }
 
-export async function getTrendingMovies() {
-  const res = await fetch(`${BASE_URL}/trending/movie/day?api_key=${KEY}`);
+export async function getTrendingMovies(filter) {
+  const res = await fetch(`${BASE_URL}/trending/movie/${filter}?api_key=${KEY}`);
   const { results } = await res.json();
   return results;
 }

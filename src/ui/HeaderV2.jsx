@@ -10,7 +10,7 @@ function HeaderV2() {
         <img
           src="https://www.justwatch.com/appassets/img/logo/JustWatch-logo-large.webp"
           alt=""
-          className="hidden w-48"
+          className="hidden md:inline-block w-48"
         />
         <CiSquareMore
           className="text-2xl text-sky-200/20 md:hidden"

@@ -85,11 +85,11 @@ function Menu() {
                 activeLink === "/popular" ? "text-sky-200" : ""
               }`}
             />
-            Popular
+            Trending
           </li>
         </Link>
 
-        <Link to="/trending">
+        <Link to="/popular">
           <li
             className={`${liStyle} ${
               activeLink === "/trending" ? "border-text-sky-200 border-r" : ""
@@ -101,7 +101,7 @@ function Menu() {
                 activeLink === "/trending" ? "text-sky-200" : ""
               }`}
             />
-            Trending
+            Popular
           </li>
         </Link>
 

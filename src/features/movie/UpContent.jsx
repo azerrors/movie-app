@@ -5,14 +5,15 @@ import { getTrendingTv } from "../../services/tvSeries";
 import List from "../../ui/List";
 
 function UpContent({ serie }) {
+  const day = "day";
   const { data: ratedMovies } = useQuery({
     queryKey: ["getRatedMoviesForMovie"],
     queryFn: getRatedMovies,
   });
 
   const { data: trendingTv } = useQuery({
-    queryKey: ["getYTrendingTvForSerie"],
-    queryFn: getTrendingTv,
+    queryKey: ["getYTrendingTvForSerie", day],
+    queryFn: () => getTrendingTv(day),
   });
 
   return (

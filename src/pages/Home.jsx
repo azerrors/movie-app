@@ -34,10 +34,7 @@ function Home() {
     queryKey: ["getPopularMoviesForHome"],
     queryFn: getPopularMovies,
   });
-  const { data: trendingMovies } = useQuery({
-    queryKey: ["getTrendingMoviesForHome"],
-    queryFn: getTrendingMovies,
-  });
+
   const { data: trendingTv } = useQuery({
     queryKey: ["getTrendingTvForHome"],
     queryFn: getTrendingTv,

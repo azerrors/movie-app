@@ -21,6 +21,8 @@ import { ToastContainer } from "react-toastify";
 
 import "react-toastify/dist/ReactToastify.css";
 import Note from "./features/favorites/Note";
+import Trending from "./pages/Trending";
+import Popular from "./pages/Popular";
 
 const queryClient = new QueryClient();
 
@@ -36,12 +38,15 @@ function App() {
               <Route element={<AppLayout />}>
                 <Route element={<Navigate replace to="/" />} />
                 <Route path="/" index element={<Home />} />
+                <Route path="movie" element={<Movie />} />
+                <Route path="series" element={<Serie />} />
                 <Route path="favorites" element={<Favorites />} />
-                <Route path="movie" element={<Movie />}></Route>
+                <Route path="trending" element={<Trending />} />
+                <Route path="popular" element={<Popular />} />
+
                 <Route path="upcoming_movies" element={<UpcomingMovies />} />
                 <Route path="populer_movies" element={<PopulerMovies />} />
                 <Route path="trending_movies" element={<TrendingMovies />} />
-                <Route path="series" element={<Serie />}></Route>
                 <Route path="trending_series" element={<TrendingSeries />} />
                 <Route path="populer_series" element={<PopulerSeries />} />
                 <Route path="/:id" element={<Details />} />

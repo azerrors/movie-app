@@ -73,18 +73,18 @@ function Serie() {
               {serieGenreName && !serieInput && (
                 <h3 className="text-sm uppercase  md:mr-36">
                   <span className="text-red-200/50">{serieGenreName}</span>{" "}
-                  Movies
+                  Series
                 </h3>
               )}
               {!serieGenreName && !serieVote && !serieInput && serieYear && (
                 <h3 className="text-sm uppercase  md:mr-36">
-                  <span className="text-red-200/50">{serieYear}</span> Movies
+                  <span className="text-red-200/50">{serieYear}</span> Series
                 </h3>
               )}
               {!serieGenreName && serieVote && !serieInput && !serieYear && (
                 <h3 className="text-sm uppercase  md:mr-36">
                   <span className="text-red-200/50">{serieVote}</span>
-                  ⭐Movies
+                  ⭐Series
                 </h3>
               )}
             </div>
