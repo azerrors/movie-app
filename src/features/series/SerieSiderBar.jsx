@@ -4,14 +4,19 @@ import { useSerie } from "../../contexts/SerieContext";
 import SerieGenre from "./SerieGenre";
 import SerieVote from "./SerieVote";
 import SerieYear from "./SerieYear";
+import useCloseModalClickByOutside from "../../hooks/useCloseModalClickByOutside";
 
 function SerieSiderBar() {
-  const { dispatch, sereiInput } = useSerie();
+  const { dispatch, sereiInput, openSerieCategory } = useSerie();
+  const handler = () => {
+    dispatch({ type: "closeSeriesCategory" });
+  };
+  const { ref } = useCloseModalClickByOutside(handler);
 
   return (
-    <div className="flex flex-col ">
-      <div className="mt-3">
-        <span className="text-md mb-1 flex items-center gap-2 border-b border-sky-200/20 pb-2 uppercase text-sky-200/50">
+    <div className="flex flex-col " ref={ref}>
+      <div className="mt-3 hidden md:inline-block">
+        <span className="text-md mb-1 flex  items-center gap-2 border-b border-sky-200/20 pb-2 uppercase text-sky-200/50">
           <BsSearch />
           Search
         </span>

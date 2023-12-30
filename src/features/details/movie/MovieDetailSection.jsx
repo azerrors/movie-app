@@ -24,10 +24,18 @@ import MovieCompanies from "./MovieCompanies";
 import MovieCountries from "./MovieCountries";
 import MovieSpokenLanguages from "./MovieSpokenLanguages,";
 import { CiCalendarDate, CiTimer } from "react-icons/ci";
+import { GoBookmarkFill } from "react-icons/go";
+
 import { GiBeveledStar } from "react-icons/gi";
+import ListElement from "../../../ui/ListElement";
+import { toast } from "react-toastify";
+import { useMovie } from "../../../contexts/movieContext";
+import { GoBookmarkSlashFill } from "react-icons/go";
+
 const BASE_IMAGE = "https://image.tmdb.org/t/p/w500";
 
 function MovieDetailSection({ movieID }) {
+  const { dispatch, favorites } = useMovie();
   const { data: movieDetails, isLoading: movieDetailsLoading } = useQuery({
     queryKey: ["movieid", movieID],
     queryFn: () => getMovieDetails(movieID),
@@ -65,9 +73,39 @@ function MovieDetailSection({ movieID }) {
     original_title,
     production_companies,
     production_countries,
+    id,
     spoken_languages,
     runtime,
   } = movieDetails ? movieDetails : [];
+
+  const isShow = favorites.some((fav) => fav.id === id);
+
+  const addFav = () => {
+    dispatch({ type: "favorites/add", payload: movieDetails });
+    toast.success(`--${title}-- added to favorite list`, {
+      position: "bottom-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+  };
+  const deleteFav = () => {
+    dispatch({ type: "favorites/delete", payload: id });
+    toast.error(`--${title}-- deleted from favorite list`, {
+      position: "bottom-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+  };
 
   const { data: collection } = useQuery({
     queryKey: ["belongto", belongs_to_collection?.id],
@@ -77,8 +115,6 @@ function MovieDetailSection({ movieID }) {
   const { name: collectinName, parts: collectionParts } = collection
     ? collection
     : {};
-
-  console.log(belongs_to_collection);
 
   if (movieDetailsLoading) {
     return (
@@ -112,7 +148,7 @@ function MovieDetailSection({ movieID }) {
 
           <div className="md:w-[30%]">
             <div>
-              <div>
+              <div className="relative">
                 {poster_path ? (
                   <img
                     className="rounded-lg  md:h-[31rem] "
@@ -126,6 +162,19 @@ function MovieDetailSection({ movieID }) {
                     alt=""
                   />
                 )}
+                <h6 className="absolute  right-0 top-0 flex  cursor-pointer justify-center pb-1 text-center text-3xl lowercase text-stone-200/70">
+                  {!isShow ? (
+                    <GoBookmarkSlashFill
+                      onClick={addFav}
+                      className="ml-1 cursor-pointer text-3xl text-stone-200 transition-all duration-300 hover:-translate-y-2"
+                    />
+                  ) : (
+                    <GoBookmarkFill
+                      onClick={deleteFav}
+                      className="ml-1 cursor-pointer text-3xl text-stone-200 transition-all duration-300 hover:-translate-y-2"
+                    />
+                  )}
+                </h6>
               </div>
               <div className="flex items-center justify-around   bg-sky-900/20 p-1 text-center text-stone-200/70">
                 <div>
@@ -299,7 +348,17 @@ function MovieDetailSection({ movieID }) {
                 {collectinName}
               </h4>
               <ul className="mt-2 p-5 text-stone-200 ">
-                <List type="list5" data={collectionParts} />
+                {belongs_to_collection.length > 5 ? (
+                  <List type="list5" data={collectionParts} />
+                ) : (
+                  <ul className="flex flex-wrap gap-1">
+                    {collectionParts?.map((item) => {
+                      return (
+                        <ListElement type="list5" data={item} key={item.id} />
+                      );
+                    })}
+                  </ul>
+                )}
               </ul>
             </div>
           )}

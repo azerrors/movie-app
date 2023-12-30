@@ -1,9 +1,8 @@
-import React from "react";
-import { useMovie } from "../../contexts/movieContext";
 import { useQuery } from "@tanstack/react-query";
-import { getPopularMovies, getRatedMovies } from "../../services/movieApi";
+import React from "react";
+import { getRatedMovies } from "../../services/movieApi";
+import { getTrendingTv } from "../../services/tvSeries";
 import List from "../../ui/List";
-import { getPopulerTv, getTrendingTv } from "../../services/tvSeries";
 
 function UpContent({ serie }) {
   const { data: ratedMovies } = useQuery({

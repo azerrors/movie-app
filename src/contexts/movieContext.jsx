@@ -7,7 +7,7 @@ const initialState = {
   filterInput: "all",
   showNote: false,
   openSidebar: false,
-  openCategory: false,
+  openMovieCategory: false,
 
   movieGenreName: "",
   movieGenre: "",
@@ -34,6 +34,7 @@ function reducer(state, action) {
         ...state,
         movieGenre: action.payload.genre,
         movieGenreName: action.payload.genreName,
+        openMovieCategory: false,
 
         movieYear: "",
         movieVote: "",
@@ -42,6 +43,8 @@ function reducer(state, action) {
       return {
         ...state,
         movieYear: action.payload,
+        openMovieCategory: false,
+
         movieVote: "",
         movieGenre: "",
         movieGenreName: "",
@@ -50,6 +53,8 @@ function reducer(state, action) {
       return {
         ...state,
         movieVote: action.payload,
+        openMovieCategory: false,
+
         movieGenre: "",
         movieYear: "",
         movieGenreName: "",
@@ -132,6 +137,7 @@ function reducer(state, action) {
         ...state,
         filterInput: action.payload,
       };
+
     case "note":
       return {
         ...state,
@@ -157,6 +163,17 @@ function reducer(state, action) {
         ...state,
         openSidebar: false,
       };
+    case "openMovieCategory":
+      return {
+        ...state,
+        openMovieCategory: !state.openMovieCategory,
+      };
+    case "closeCategory":
+      return {
+        ...state,
+        openMovieCategory: false,
+      };
+
     default:
       return {
         ...state,
@@ -177,6 +194,7 @@ function MovieProvider({ children }) {
       input,
       discoverPage,
       genrePage,
+      openMovieCategory,
       yearPage,
       filterInput,
       showNote,
@@ -208,6 +226,7 @@ function MovieProvider({ children }) {
         favorites,
         showNote,
         input,
+        openMovieCategory,
       }}
     >
       {children}

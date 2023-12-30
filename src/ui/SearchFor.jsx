@@ -15,7 +15,7 @@ function SearchFor({ data, curMultiSearchLoading }) {
       ref={ref}
       className={`${
         input ? "animate-moveInTop" : "animate-moveToTop"
-      } scrollclass absolute z-[1000] md:mr-48 rounded-lg flex  h-[40rem] w-80 justify-center overflow-auto border border-sky-200/40 bg-secondary transition-all duration-300`}
+      } scrollclass absolute z-[1000] md:mr-96 rounded-lg flex  h-[40rem] w-80 justify-center overflow-auto border border-sky-200/40 bg-secondary transition-all duration-300`}
     >
       {curMultiSearchLoading ? (
         <div className="flex  items-center justify-center">

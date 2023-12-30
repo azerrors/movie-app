@@ -3,6 +3,8 @@ import { createContext, useContext, useReducer } from "react";
 const SerieContext = createContext();
 const initialState = {
   episodes: [],
+  openSeriesCategory: false,
+
   serieGenreName: "",
   serieGenre: "",
   serieYear: "",
@@ -31,6 +33,7 @@ function reducer(state, action) {
         ...state,
         serieGenre: action.payload.genre,
         serieGenreName: action.payload.genreName,
+        openSeriesCategory: false,
 
         serieYear: "",
         serieVote: "",
@@ -39,6 +42,7 @@ function reducer(state, action) {
       return {
         ...state,
         serieYear: action.payload,
+        openSeriesCategory: false,
 
         serieVote: "",
         serieGenre: "",
@@ -48,6 +52,7 @@ function reducer(state, action) {
       return {
         ...state,
         serieVote: action.payload,
+        openSeriesCategory: false,
 
         serieGenre: "",
         serieYear: "",
@@ -152,6 +157,16 @@ function reducer(state, action) {
         windowInput: action.payload.input,
         episodes: action.payload.episodes,
       };
+    case "openSeriesCategory":
+      return {
+        ...state,
+        openSeriesCategory: !state.openSeriesCategory,
+      };
+    case "closeSeriesCategory":
+      return {
+        ...state,
+        openSeriesCategory: false,
+      };
     default:
       return {
         ...state,
@@ -174,6 +189,7 @@ function SerieProvider({ children }) {
       windowInput,
       genrePage,
       episodes,
+      openSeriesCategory,
       yearPage,
       votePage,
     },
@@ -187,6 +203,7 @@ function SerieProvider({ children }) {
       value={{
         dispatch,
         serieInput,
+        openSeriesCategory,
         serieGenre,
         serieGenreName,
         episodes,

@@ -16,13 +16,17 @@ import MovieSidebar from "../features/movie/MovieSiderbar";
 import MovieVoteSection from "../features/movie/MovieVoteSection";
 import MovieYearSection from "../features/movie/MovieYearSection";
 import UpContent from "../features/movie/UpContent";
-import HeaderV2 from "../ui/HeaderV2";
+import { IoFilterSharp } from "react-icons/io5";
 
 function Movie() {
   const {
     movieInput,
     movieGenre,
     movieYear,
+    openMovieCategory,
+    movieGenreName,
+
+    dispatch,
     movieVote,
     discoverPage,
     genrePage,
@@ -57,6 +61,36 @@ function Movie() {
     <div>
       <div>
         <UpContent />
+        <div className="flex justify-end p-2">
+          <IoFilterSharp
+            className="text-3xl text-sky-200/20 md:hidden"
+            onClick={() => dispatch({ type: "openMovieCategory" })}
+          />
+        </div>
+        <div>
+          <div className="flex items-center gap-4 px-4 text-sky-200/60 ">
+            <div>
+              {movieGenreName && !movieInput && (
+                <h3 className="text-sm uppercase  md:mr-36">
+                  <span className="text-red-200/50">{movieGenreName}</span>{" "}
+                  Movies
+                </h3>
+              )}
+              {!movieGenreName && !movieVote && !movieInput && movieYear && (
+                <h3 className="text-sm uppercase  md:mr-36">
+                  <span className="text-red-200/50">{movieYear}</span> Movies
+                </h3>
+              )}
+              {!movieGenreName && movieVote && !movieInput && !movieYear && (
+                <h3 className="text-sm uppercase  md:mr-36">
+                  <span className="text-red-200/50">{movieVote}</span>
+                  ⭐Movies
+                </h3>
+              )}
+            </div>
+            <div className="w-full rounded-xl border-b-2 border-sky-200/50  py-1"></div>
+          </div>
+        </div>
         <div className="flex h-full flex-col-reverse gap-5 bg-secondary p-3 shadow-lg  md:flex-row">
           <div className=" md:w-9/12">
             <MovieDiscoverSection
@@ -81,8 +115,20 @@ function Movie() {
               voteAverageLoading={voteAverageLoading}
             />
           </div>
-          <div className="md:w-3/12">
-            <MovieSidebar />
+          <div
+            className={`md:w-3/12 ${
+              openMovieCategory ? " top-0 animate-moveInTop bg-secondary" : ""
+            }`}
+          >
+            {!openMovieCategory ? (
+              <span className="hidden md:inline-block">
+                <MovieSidebar />
+              </span>
+            ) : (
+              <span>
+                <MovieSidebar />
+              </span>
+            )}
           </div>
         </div>
       </div>

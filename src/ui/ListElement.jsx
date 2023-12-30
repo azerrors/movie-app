@@ -254,34 +254,34 @@ function ListElement({ type, movie, serie, data }) {
       name,
       first_air_date,
     } = data;
-    const isShow = favorites.some((fav) => fav.id === id);
+      const isShow = favorites.some((fav) => fav.id === id);
 
-    const addFav = () => {
-      dispatch({ type: "favorites/add", payload: movie });
-      toast.success(`--${title}-- added to favorite list`, {
-        position: "bottom-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-      });
-    };
-    const deleteFav = () => {
-      dispatch({ type: "favorites/delete", payload: id });
-      toast.error(`--${title}-- deleted from favorite list`, {
-        position: "bottom-right",
-        autoClose: 3000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-      });
-    };
+      const addFav = () => {
+        dispatch({ type: "favorites/add", payload: data });
+        toast.success(`--${title}-- added to favorite list`, {
+          position: "bottom-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
+      };
+      const deleteFav = () => {
+        dispatch({ type: "favorites/delete", payload: id });
+        toast.error(`--${title}-- deleted from favorite list`, {
+          position: "bottom-right",
+          autoClose: 3000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
+      };
     return (
       <div className="group  w-32  rounded-lg transition-all duration-300   md:h-96 md:w-48">
         <Link to={`/${id}?${title ? "movieId" : "serieId"}=${id}`}>

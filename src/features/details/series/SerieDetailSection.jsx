@@ -25,10 +25,14 @@ import SerieVideo from "./SerieVideo";
 import { CiCalendarDate } from "react-icons/ci";
 import { GiBeveledStar } from "react-icons/gi";
 import { CiTimer } from "react-icons/ci";
+import { GoBookmarkFill, GoBookmarkSlashFill } from "react-icons/go";
+import { toast } from "react-toastify";
+import { useMovie } from "../../../contexts/movieContext";
 
 const BASE_IMAGE = "https://image.tmdb.org/t/p/w500";
 
 function SerieDetailSection({ serieID }) {
+  const { dispatch, favorites } = useMovie();
   const { showWindow, episodes, windowInput } = useSerie();
 
   const { data: serieDetails, isLoading: serieDetailsLoading } = useQuery({
@@ -79,6 +83,35 @@ function SerieDetailSection({ serieID }) {
     status,
   } = serieDetails ? serieDetails : [];
 
+  const isShow = favorites.some((fav) => fav.id === id);
+
+  const addFav = () => {
+    dispatch({ type: "favorites/add", payload: serieDetails });
+    toast.success(`--${name}-- added to favorite list`, {
+      position: "bottom-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+  };
+  const deleteFav = () => {
+    dispatch({ type: "favorites/delete", payload: id });
+    toast.error(`--${name}-- deleted from favorite list`, {
+      position: "bottom-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "colored",
+    });
+  };
+
   if (serieDetailsLoading) {
     return (
       <div>
@@ -120,7 +153,7 @@ function SerieDetailSection({ serieID }) {
 
           <div className="md:w-[30%]">
             <div>
-              <div>
+              <div className="relative">
                 {poster_path ? (
                   <img
                     className="rounded-lg  md:h-[31rem] "
@@ -134,6 +167,19 @@ function SerieDetailSection({ serieID }) {
                     alt=""
                   />
                 )}
+                <h6 className="absolute  right-0 top-0 flex  cursor-pointer justify-center pb-1 text-center text-3xl lowercase text-stone-200/70">
+                  {!isShow ? (
+                    <GoBookmarkSlashFill
+                      onClick={addFav}
+                      className="ml-1 cursor-pointer text-3xl text-stone-200 transition-all duration-300 hover:-translate-y-2"
+                    />
+                  ) : (
+                    <GoBookmarkFill
+                      onClick={deleteFav}
+                      className="ml-1 cursor-pointer text-3xl text-stone-200 transition-all duration-300 hover:-translate-y-2"
+                    />
+                  )}
+                </h6>
               </div>
               <div className="flex items-center justify-around   bg-sky-900/20 p-1 text-center text-stone-200/70">
                 <div>
