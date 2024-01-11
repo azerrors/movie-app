@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
 import { CiViewList } from "react-icons/ci";
@@ -10,17 +10,22 @@ import { RiSlideshow3Line } from "react-icons/ri";
 import { useMovie } from "../contexts/movieContext";
 
 function Menu() {
-  const { dispatch } = useMovie();
   const [activeLink, setActiveLink] = useState(null);
- 
+
+  const { dispatch, openSidebar } = useMovie();
+
   const liStyle =
     "flex items-center p-2 gap-3 transition-all duration-300 text-sky-200/40 hover:text-sky-200/80";
   const iconStyle = "text-2xl";
 
   const handleLinkClick = (link) => {
-    setActiveLink(link);
     dispatch({ type: "closeSidebar" });
+    setActiveLink(link);
   };
+
+  useEffect(() => {
+    document.body.style.overflowY = openSidebar ? "hidden" : "auto";
+  }, [openSidebar]);
 
   return (
     <div>

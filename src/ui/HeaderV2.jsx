@@ -1,18 +1,18 @@
-import { useMovie } from "../contexts/movieContext";
 import { CiSquareMore } from "react-icons/ci";
-import useBodyScrollLock from "../hooks/useBodyScrollLock ";
+import { useMovie } from "../contexts/movieContext";
+import { useEffect } from "react";
 
 function HeaderV2() {
-  const [isLocked, toggle] = useBodyScrollLock();
-  console.log(isLocked);
-  const { input, dispatch } = useMovie();
+  const { input, dispatch, openSidebar } = useMovie();
 
   const handleClick = () => {
     dispatch({ type: "openSidebar" });
-    if (!isLocked) {
-      toggle(); // Toggle the scroll lock only if it's not locked
-    }
   };
+
+  useEffect(() => {
+    document.body.style.overflowY = openSidebar ? "hidden" : "auto";
+  }, [openSidebar]);
+
   return (
     <ul className="flex items-center justify-between bg-secondary p-4 ">
       <li>
