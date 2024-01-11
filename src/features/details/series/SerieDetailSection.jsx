@@ -294,23 +294,25 @@ function SerieDetailSection({ serieID }) {
                   Cast
                 </h4>
                 <ul className="mt-2 p-5">
-                  {serieCast?.length > 7 ? (
-                    <MySlider
-                      slidesToShow={7}
-                      slidesToScroll={3}
-                      slidesToShow400={3}
-                      slidesToScroll400={3}
-                    >
-                      {serieCast?.map((cast) => {
-                        return <SerieCast key={cast.id} cast={cast} />;
-                      })}
-                    </MySlider>
+                  {serieCast?.length >= 7 ? (
+                    <ul className="mt-2 p-5">
+                      <MySlider
+                        slidesToShow={7}
+                        slidesToScroll={4}
+                        slidesToShow400={3}
+                        slidesToScroll400={3}
+                      >
+                        {serieCast?.map((cast) => {
+                          return <SerieCast key={cast.id} cast={cast} />;
+                        })}
+                      </MySlider>
+                    </ul>
                   ) : (
-                    <div className="flex flex-wrap justify-center gap-5 md:justify-start">
+                    <ul className="flex flex-wrap gap-1">
                       {serieCast?.map((cast) => {
                         return <SerieCast key={cast.id} cast={cast} />;
                       })}
-                    </div>
+                    </ul>
                   )}
                 </ul>
               </div>
@@ -336,7 +338,7 @@ function SerieDetailSection({ serieID }) {
           {serieVideo?.length && (
             <div>
               <h4 className="mt-10 text-xl font-medium uppercase tracking-wider text-sky-200/50">
-                Fragman
+                Tutorial
               </h4>
               <ul className="mt-2 flex flex-col items-center justify-center gap-5">
                 {serieVideo?.length > 0 ? (
@@ -355,10 +357,10 @@ function SerieDetailSection({ serieID }) {
               <h4 className="mt-10 text-xl font-medium uppercase tracking-wider text-sky-200/50">
                 Seasons
               </h4>
-              <ul className="mt-5 px-2 text-center">
+              <ul className="mt-5 p-2 text-center">
                 {seasons.length > 7 ? (
                   <MySlider
-                    slidesToShow={7}
+                    slidesToShow={8}
                     slidesToScroll={4}
                     slidesToShow400={3}
                     slidesToScroll400={3}

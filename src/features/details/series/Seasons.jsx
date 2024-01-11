@@ -21,8 +21,8 @@ function Seasons({ seasons, id }) {
   }
 
   return (
-    <div>
-      <Button type="primary" onClick={openWindow}>
+    <div className="p-1 ">
+      <Button type="secondary" onClick={openWindow}>
         {name}
       </Button>
     </div>

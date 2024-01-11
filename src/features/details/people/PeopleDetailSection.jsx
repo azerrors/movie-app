@@ -55,26 +55,25 @@ function PeopleDetailSection({ peopleId }) {
     setIsModalOpen(false);
   };
 
-  const newMovieArray = peopleMovieCredits?.slice(0, length);
-  const handleMore = () => {
-    setLength(peopleMovieCredits.length);
-  };
-  const handleShort = () => {
-    setLength(8);
-  };
+  // const handleMore = () => {
+  //   setLength(peopleMovieCredits.length);
+  // };
+  // const handleShort = () => {
+  //   setLength(8);
+  // };
 
   return (
     <div>
-      <div className=" border-b">
+      <div className=" border-b md:mt-0 mt-5 pb-5">
         <div>
-          <h2 className="ml-5 text-left text-xl font-semibold uppercase tracking-widest text-white md:my-10 md:ml-64 md:text-3xl">
+          <h2 className="ml-5 text-left text-xl font-semibold uppercase tracking-widest text-sky-200/70 md:my-10 md:ml-32 md:text-3xl">
             {name}
-            <p className="text-xs uppercase tracking-wider text-white ">
+            <p className="text-xs uppercase tracking-wider text-sky-200/40 ">
               {known_for_department}
             </p>
           </h2>
         </div>
-        <div className="flex flex-col  justify-around p-2 md:flex-row-reverse">
+        <div className="flex flex-col  justify-around p-2 md:flex-row">
           <div className="relative  p-1">
             <div className="flex justify-center">
               <img
@@ -91,12 +90,12 @@ function PeopleDetailSection({ peopleId }) {
               )}
             </div>
           </div>
-          <div className="flex flex-col">
-            <div className="flex flex-col gap-3 uppercase  text-white  md:text-xl">
+          <div className="flex flex-col mt-5 md:mt-0">
+            <div className="flex flex-col gap-3 uppercase text-sm  text-sky-200/70 md:text-xl">
               {place_of_birth && (
                 <h4>
                   Birth Place:
-                  <span className="ml-5 tracking-widest text-stone-400">
+                  <span className="ml-5 tracking-widest text-sky-200/30">
                     {place_of_birth}
                   </span>
                 </h4>
@@ -104,7 +103,7 @@ function PeopleDetailSection({ peopleId }) {
               {birthday && (
                 <h4>
                   Birthday:
-                  <span className="ml-5 tracking-widest text-stone-400">
+                  <span className="ml-5 tracking-widest text-sky-200/30">
                     {birthday}
                   </span>
                 </h4>
@@ -112,19 +111,19 @@ function PeopleDetailSection({ peopleId }) {
               {deathday && (
                 <h4>
                   Deathday:
-                  <span className="ml-5 tracking-widest text-stone-400">
+                  <span className="ml-5 tracking-widest text-sky-200/30">
                     {deathday}
                   </span>
                 </h4>
               )}
             </div>
-            <div className="space-x-5">
+            <div className="space-x-5 mt-5">
               {biography && (
-                <Button type="normal" onClick={openModal}>
+                <Button type="secondary" onClick={openModal}>
                   biography
                 </Button>
               )}
-              <Button type="normal" onClick={() => navigate(-1)}>
+              <Button type="secondary" onClick={() => navigate(-1)}>
                 back
               </Button>
             </div>
@@ -138,32 +137,12 @@ function PeopleDetailSection({ peopleId }) {
         />
       </div>
       {peopleMovieCredits?.length !== 0 && (
-        <div>
-          <h3 className="flex items-center gap-2 p-2 text-xl font-semibold uppercase tracking-widest  text-white">
+        <div className="p-5">
+          <h3 className="mb-5 flex items-center gap-2 p-2 text-xl font-semibold uppercase  tracking-widest text-sky-200/50">
             <BiMovie className="text-2xl" />
             Known For
           </h3>
-          <List type="people/moviecredits" movie={newMovieArray} />
-
-          {peopleMovieCredits?.length > 8 && (
-            <div>
-              {length === 8 && (
-                <div className="mr-5 flex justify-end">
-                  <Button type="normal" onClick={handleMore}>
-                    More
-                  </Button>
-                </div>
-              )}
-
-              {length === peopleMovieCredits?.length && (
-                <div className="mr-5 flex justify-end">
-                  <Button type="normal" onClick={handleShort}>
-                    Less
-                  </Button>
-                </div>
-              )}
-            </div>
-          )}
+          <List type="list3" data={peopleMovieCredits} />
         </div>
       )}
     </div>

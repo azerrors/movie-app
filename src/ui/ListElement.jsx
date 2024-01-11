@@ -359,7 +359,7 @@ function ListElement({ type, movie, serie, data }) {
 
     return (
       <div className="group relative mt-5 w-72   rounded-lg transition-all duration-300   md:h-56 md:w-64">
-        <span className="absolute -top-6 z-10 hidden text-sky-200/70 group-hover:flex">
+        <span className="absolute bottom-4 z-10 hidden text-sky-200/70 group-hover:flex">
           {episode_number}
         </span>
         {still_path ? (

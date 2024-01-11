@@ -112,7 +112,7 @@ function MovieDetailSection({ movieID }) {
     queryFn: () => getBelongToCollection(belongs_to_collection?.id),
   });
 
-  const { name: collectinName, parts: collectionParts } = collection
+  const { name: collectionName, parts: collectionParts } = collection
     ? collection
     : {};
 
@@ -142,7 +142,7 @@ function MovieDetailSection({ movieID }) {
               {title}({original_language})
             </h6>
             <h6 className="text-sm uppercase tracking-widest text-stone-200/50 md:text-xl">
-              Orginal title: {original_title}
+              Original title: {original_title}
             </h6>
           </div>
 
@@ -284,18 +284,26 @@ function MovieDetailSection({ movieID }) {
                 <h4 className="mt-10 text-lg font-medium uppercase tracking-wider text-sky-200/50 md:text-xl">
                   Cast
                 </h4>
-                <ul className="mt-2 p-5">
-                  <MySlider
-                    slidesToShow={7}
-                    slidesToScroll={4}
-                    slidesToShow400={3}
-                    slidesToScroll400={3}
-                  >
+                {movieCast?.length > 7 ? (
+                  <ul className="mt-2 p-5">
+                    <MySlider
+                      slidesToShow={7}
+                      slidesToScroll={4}
+                      slidesToShow400={3}
+                      slidesToScroll400={3}
+                    >
+                      {movieCast?.map((cast) => {
+                        return <MovieCast key={cast.id} cast={cast} />;
+                      })}
+                    </MySlider>
+                  </ul>
+                ) : (
+                  <ul className="flex flex-wrap gap-1">
                     {movieCast?.map((cast) => {
                       return <MovieCast key={cast.id} cast={cast} />;
                     })}
-                  </MySlider>
-                </ul>
+                  </ul>
+                )}
               </div>
             )}
 
@@ -345,10 +353,10 @@ function MovieDetailSection({ movieID }) {
           {belongs_to_collection && (
             <div>
               <h4 className="mt-10 text-lg font-medium uppercase tracking-wider text-sky-200/50 md:text-xl">
-                {collectinName}
+                {collectionName}
               </h4>
               <ul className="mt-2 p-5 text-stone-200 ">
-                {belongs_to_collection.length > 5 ? (
+                {collectionParts?.length > 5 ? (
                   <List type="list5" data={collectionParts} />
                 ) : (
                   <ul className="flex flex-wrap gap-1">
