@@ -4,10 +4,10 @@ import { Outlet } from "react-router-dom";
 import { useMovie } from "../contexts/movieContext";
 import useCloseModalClickByOutside from "../hooks/useCloseModalClickByOutside";
 import { getMultiSearch } from "../services/OtherApi";
+import Footer from "./Footer";
 import HeaderV2 from "./HeaderV2";
 import SearchFor from "./SearchFor";
 import Sidebar from "./Sidebar";
-import Footer from "./Footer";
 
 function AppLayout() {
   const { input, openSidebar, dispatch } = useMovie();

@@ -141,7 +141,7 @@ function Home() {
 
   return (
     <div className="flex flex-col gap-9 p-5">
-      <div className="rounded-xl  border-x border-sky-200/60  p-8 shadow-xl">
+      <div className="rounded-xl  p-5 shadow-xl">
         <h5 className="mb-6 border-x  border-sky-200/60 p-1 text-sky-200/50  md:text-xl ">
           Popular Movies
         </h5>
@@ -156,7 +156,7 @@ function Home() {
           <List type="list6" data={upcomingMovies} />
         </div>
 
-        <div className="h-96 w-full rounded-xl    border-x border-sky-200/60   p-8 shadow-xl  md:h-80 md:w-4/12">
+        <div className=" w-full rounded-xl    border-x border-sky-200/60   p-8 shadow-xl  md:w-4/12">
           <h5 className="mb-6 border-x  border-sky-200/60 p-1 text-sky-200/50  md:text-xl ">
             Rated Movies
           </h5>

@@ -2,6 +2,7 @@ import { FaHeart, FaRegHeart } from "react-icons/fa6";
 import { Link } from "react-router-dom";
 import { useMovie } from "../contexts/movieContext";
 import { toast } from "react-toastify";
+import Button from "./Button";
 
 const BASE_IMAGE = "https://image.tmdb.org/t/p/w500";
 
@@ -81,7 +82,7 @@ function ListElement({ type, movie, serie, data }) {
             <img
               src={`${BASE_IMAGE}${poster_path}`}
               alt=""
-              className="w-12 h-12 rounded-lg    transition-all duration-300 group-hover:-translate-y-2     md:h-12 md:w-12"
+              className="h-12 w-12 rounded-lg    transition-all duration-300 group-hover:-translate-y-2     md:h-12 md:w-12"
             />
           ) : (
             <img
@@ -112,42 +113,57 @@ function ListElement({ type, movie, serie, data }) {
     const {
       title,
       vote_average,
-      release_date,
       id,
       poster_path,
       name,
-      first_air_date,
       backdrop_path,
     } = data;
 
     return (
       <Link
         to={`/${id}?${title ? "movieId" : "serieId"}=${id}`}
-        className="flex gap-2  bg-sky-900/10  "
+        className="relative flex gap-2 md:h-24 h-20 "
       >
-        <div>
-          {poster_path ? (
-            <img
-              src={`${BASE_IMAGE}${poster_path}`}
-              alt=""
-              className="w-12 h-12 rounded-lg    transition-all duration-300 group-hover:-translate-y-2     md:h-12 md:w-12"
-            />
-          ) : (
-            <img
-              src="/public/imagenotfound.jpg"
-              className="w-12 h-12 rounded-lg    transition-all duration-300 group-hover:-translate-y-2     md:h-12 md:w-12"
-              alt=""
-            />
-          )}
+        <div
+          className="w-34 group relative h-72 w-full rounded-lg bg-cover  bg-top transition-all  duration-300"
+          style={
+            ({
+              backgroundImage:
+                "linear-gradient(to bottom,transparent,rgba(0,0,0,.6))",
+            },
+            poster_path
+              ? { backgroundImage: `url(${BASE_IMAGE}${poster_path}) ` }
+              : { backgroundImage: `url("/imagenotfound.jpg")` })
+          }
+        >
+          <div className=" h-screen bg-gradient-to-b from-black/80 to-black"></div>
         </div>
-        <div className="flex flex-col justify-end">
-          <div className="w-48 truncate text-xs text-stone-200">
-            {title ? title : name}
+
+        <div className="absolute flex left-5 top-5 gap-5">
+          <div>
+            {poster_path ? (
+              <img
+                src={`${BASE_IMAGE}${poster_path}`}
+                alt=""
+                className="h-12 w-12 rounded-lg     transition-all duration-300 group-hover:-translate-y-2     md:h-12 md:w-12"
+              />
+            ) : (
+              <img
+                src="/public/imagenotfound.jpg"
+                className="h-12 w-12 rounded-lg    transition-all duration-300 group-hover:-translate-y-2     md:h-12 md:w-12"
+                alt=""
+              />
+            )}
           </div>
-          <div className="flex">
-            <span className="text-xs text-stone-200">
-              {vote_average.toFixed(1)}⭐
-            </span>
+          <div className="flex flex-col justify-end">
+            <div className="w-48 truncate text-xs text-stone-200">
+              {title ? title : name}
+            </div>
+            <div className="flex">
+              <span className="text-xs text-stone-200">
+                {vote_average.toFixed(1)}⭐
+              </span>
+            </div>
           </div>
         </div>
       </Link>
@@ -162,55 +178,60 @@ function ListElement({ type, movie, serie, data }) {
       id,
       poster_path,
       name,
-      first_air_date,
       backdrop_path,
+      overview,
     } = data;
-    const isShow = favorites.some((fav) => fav.id === id);
+
+    const dateObject = new Date(release_date);
+    const year = dateObject.getFullYear();
 
     return (
-      <Link
-        to={`/${id}?${title ? "movieId" : "serieId"}=${id}`}
-        className="to-black-60 bg-gradient-to-b from-transparent"
-      >
+      <div className="relative rounded-2xl">
         <div
-          className="group relative w-16 h-16 rounded-xl bg-cover bg-top  transition-all duration-300   md:h-24 md:w-24"
+          className="blur-xs group h-56 w-full  rounded-xl bg-cover bg-center transition-all duration-300 hover:scale-[1.01] md:h-[35rem] md:w-full"
           style={
-            ({
-              backgroundImage:
-                "linear-gradient(to bottom,transparent,rgba(0,0,0,.6))",
-            },
             poster_path
-              ? { backgroundImage: `url(${BASE_IMAGE}${poster_path}) ` }
-              : { backgroundImage: `url("/imagenotfound.jpg")` })
+              ? { backgroundImage: `url(${BASE_IMAGE}${backdrop_path})` }
+              : { backgroundImage: `url("/imagenotfound.jpg")` }
           }
         >
-          {/* <div>
-            <div className=" absolute bottom-0 flex translate-y-4 items-center justify-between  transition-all duration-500 group-hover:translate-y-0">
-              <h2 className=" ml-1 mt-2 w-32 truncate text-xs uppercase text-stone-200/90">
-                {title ? title : name}
-              </h2>
-              <span className=" absolute -right-24 mr-2 mt-2 text-xs font-semibold text-stone-300">
-                {vote_average.toFixed(1)}⭐
-              </span>
-            </div>
-          </div> */}
+          <div className=" h-screen bg-gradient-to-b from-black/70 to-black"></div>
         </div>
-      </Link>
+        <div>
+          <div className="z-50 ">
+            <img
+              src={`${BASE_IMAGE}${poster_path}`}
+              alt=""
+              className="absolute bottom-5 left-5 w-16 rounded-md md:bottom-3 md:left-48 md:right-5 md:top-24 md:w-56"
+            />
+          </div>
+          <div>
+            <h4 className=" absolute bottom-24 left-24 w-32 truncate text-xs font-extrabold tracking-widest text-sky-200/80 md:left-[28rem] md:top-24 md:w-96 md:text-xl">
+              {title ? title : name}
+            </h4>
+            <span className="md:text-md absolute bottom-16 left-24 text-xs text-sky-200/50 md:left-[28rem] md:top-36">
+              {year}
+            </span>
+            <span className="md:text-s absolute bottom-16 left-40 text-xs text-sky-200/50 md:left-[35rem] md:top-36">
+              ⭐ {vote_average.toFixed(2)}
+            </span>
+            <p className="absolute left-[28rem] top-48 hidden text-sky-200/50 md:inline-block">
+              {overview}
+            </p>
+          </div>
+          <Link
+            to={`/${id}?${title ? "movieId" : "serieId"}=${id}`}
+            className="absolute bottom-5 left-24  md:bottom-36 md:left-[28rem]"
+          >
+            <Button type="secondary">More</Button>
+          </Link>
+        </div>
+      </div>
     );
   }
 
   if (type === "list6") {
-    const {
-      title,
-      vote_average,
-      release_date,
-      id,
-      poster_path,
-      name,
-      first_air_date,
-      backdrop_path,
-    } = data;
-    const isShow = favorites.some((fav) => fav.id === id);
+    const { title, vote_average, id, poster_path, name } = data;
 
     return (
       <Link
@@ -218,7 +239,7 @@ function ListElement({ type, movie, serie, data }) {
         className="to-black-60 bg-gradient-to-b from-transparent"
       >
         <div
-          className="group relative w-34 h-72 rounded-lg bg-cover bg-top  transition-all duration-300   md:h-48  md:w-32"
+          className="w-34 group relative h-72 rounded-lg bg-cover bg-top  transition-all duration-300   md:h-96  md:w-72"
           style={
             ({
               backgroundImage:
@@ -229,12 +250,14 @@ function ListElement({ type, movie, serie, data }) {
               : { backgroundImage: `url("/imagenotfound.jpg")` })
           }
         >
+          <div className=" h-screen bg-gradient-to-b from-black/40 to-black"></div>
+
           <div>
-            <div className=" absolute bottom-0 flex translate-y-4 items-center justify-between  transition-all duration-500 group-hover:translate-y-0">
-              <h2 className=" ml-1 mt-2 w-32 truncate text-xs uppercase text-stone-200/90">
+            <div className=" flex items-center justify-between  transition-all duration-500 ">
+              <h2 className="absolute bottom-5 left-3 w-32 truncate text-xs uppercase tracking-widest text-sky-200/90">
                 {title ? title : name}
               </h2>
-              <span className=" absolute -right-24 mr-2 mt-2 text-xs font-semibold text-stone-300">
+              <span className=" absolute bottom-4 right-5 mr-2 mt-2 text-sm font-semibold text-sky-200/80">
                 {vote_average.toFixed(1)}⭐
               </span>
             </div>
@@ -254,34 +277,34 @@ function ListElement({ type, movie, serie, data }) {
       name,
       first_air_date,
     } = data;
-      const isShow = favorites.some((fav) => fav.id === id);
+    const isShow = favorites.some((fav) => fav.id === id);
 
-      const addFav = () => {
-        dispatch({ type: "favorites/add", payload: data });
-        toast.success(`--${title}-- added to favorite list`, {
-          position: "bottom-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-        });
-      };
-      const deleteFav = () => {
-        dispatch({ type: "favorites/delete", payload: id });
-        toast.error(`--${title}-- deleted from favorite list`, {
-          position: "bottom-right",
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-        });
-      };
+    const addFav = () => {
+      dispatch({ type: "favorites/add", payload: data });
+      toast.success(`--${title}-- added to favorite list`, {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+    };
+    const deleteFav = () => {
+      dispatch({ type: "favorites/delete", payload: id });
+      toast.error(`--${title}-- deleted from favorite list`, {
+        position: "bottom-right",
+        autoClose: 3000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+    };
     return (
       <div className="group  w-32  rounded-lg transition-all duration-300   md:h-96 md:w-48">
         <Link to={`/${id}?${title ? "movieId" : "serieId"}=${id}`}>
@@ -599,6 +622,21 @@ function ListElement({ type, movie, serie, data }) {
     return (
       <div className="group mt-5 w-32  rounded-lg transition-all duration-300   md:h-96 md:w-56">
         <Link to={`/${id}?movieId=${id}`}>
+          <div
+            className="w-34 group relative h-72 rounded-lg bg-cover bg-top  transition-all duration-300   md:h-96  md:w-72"
+            style={
+              ({
+                backgroundImage:
+                  "linear-gradient(to bottom,transparent,rgba(0,0,0,.6))",
+              },
+              poster_path
+                ? { backgroundImage: `url(${BASE_IMAGE}${poster_path}) ` }
+                : { backgroundImage: `url("/imagenotfound.jpg")` })
+            }
+          >
+            <div className=" h-screen bg-gradient-to-b from-black/40 to-black"></div>
+          </div>
+
           {poster_path ? (
             <img
               src={`${BASE_IMAGE}${poster_path}`}

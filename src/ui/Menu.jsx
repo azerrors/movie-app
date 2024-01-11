@@ -1,18 +1,18 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
+import { CiViewList } from "react-icons/ci";
+import { IoIosTrendingUp } from "react-icons/io";
 import { IoHomeOutline } from "react-icons/io5";
+import { LuCrown } from "react-icons/lu";
 import { MdMovie } from "react-icons/md";
 import { RiSlideshow3Line } from "react-icons/ri";
-import { IoIosTrendingUp } from "react-icons/io";
-import { CiViewList } from "react-icons/ci";
-import { LuCrown } from "react-icons/lu";
 import { useMovie } from "../contexts/movieContext";
 
 function Menu() {
   const { dispatch } = useMovie();
   const [activeLink, setActiveLink] = useState(null);
-
+ 
   const liStyle =
     "flex items-center p-2 gap-3 transition-all duration-300 text-sky-200/40 hover:text-sky-200/80";
   const iconStyle = "text-2xl";

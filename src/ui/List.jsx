@@ -32,7 +32,7 @@ function List({ type, movie, serie, data }) {
         <MySlider
           slidesToShow={4}
           slidesToScroll={3}
-          slidesToShow400={5}
+          slidesToShow400={6}
           slidesToScroll400={3}
           autoplay={true}
           autoplaySpeed={3000}
@@ -54,10 +54,10 @@ function List({ type, movie, serie, data }) {
     return (
       <ul>
         <MySlider
-          slidesToShow={9}
-          slidesToScroll={3}
-          slidesToShow400={3}
-          slidesToScroll400={2}
+          slidesToShow={1}
+          slidesToScroll={1}
+          slidesToShow400={1}
+          slidesToScroll400={1}
           autoplay={true}
           autoplaySpeed={3000}
           pauseOnHover={true}
@@ -73,8 +73,8 @@ function List({ type, movie, serie, data }) {
     return (
       <ul>
         <MySlider
-          slidesToShow={4}
-          slidesToScroll={3}
+          slidesToShow={2}
+          slidesToScroll={2}
           slidesToShow400={1}
           slidesToScroll400={1}
         >
